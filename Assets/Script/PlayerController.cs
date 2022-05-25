@@ -33,8 +33,7 @@ public class PlayerController : MonoBehaviour
             if (GetComponent<CapsuleCollider>().enabled)
             {
                 transform.position += new Vector3(0, 0, -0.6f);
-                rigid.velocity = rigid.velocity = Vector3.up * 5f;
-                rigid.drag = 5f;
+                rigid.drag = 20f;
                 GetComponent<CapsuleCollider>().enabled = false;
             }
         }
@@ -55,11 +54,11 @@ public class PlayerController : MonoBehaviour
     private void OnCollisionStay(Collision collision)
     {
         isGround = true;
-        //RaycastHit hit;
-        //if (Physics.Raycast(transform.position, Vector3.down, out hit, 2f) == false)
-        //{
-        //    DataManager.Instance.PlayerDie = true;
-        //}
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position + new Vector3(-0.1f,0,0), Vector3.down, out hit, 2f) == false)
+        {
+            DataManager.Instance.PlayerDie = true;
+        }
     }
 
     private void OnCollisionExit(Collision collision)

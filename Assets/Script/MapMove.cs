@@ -15,7 +15,7 @@ public class MapMove : MonoBehaviour
         else
         {
             if(mapSpeed> 0)
-                mapSpeed -= 30f * Time.deltaTime;
+                mapSpeed -= 35f * Time.deltaTime;
             else
                 mapSpeed = 0;
             transform.Translate(-mapSpeed * Time.deltaTime, 0, 0);
