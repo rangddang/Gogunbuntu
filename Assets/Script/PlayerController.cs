@@ -69,10 +69,13 @@ public class PlayerController : MonoBehaviour
         {
 
             //RaycastHit hit;
-            Debug.DrawRay(transform.position + new Vector3(0, 0, 0), new Vector3(1f, 1f, 0) * 3f, Color.yellow);
-            isHook = true;
-            transform.position += new Vector3(0, hookRotate * -0.4f, 0);
-            hookRotate = -70;
+            //Debug.DrawRay(transform.position + new Vector3(0, 0, 0), new Vector3(1f, 1f, 0) * 3f, Color.yellow);
+            if (isHook)
+            {
+                transform.position += new Vector3(0, hookRotate * -0.4f, 0);
+                isHook = true;
+                hookRotate = -70;
+            }
             //hookPos = transform.position + new Vector3(2, 3, 0);
 
             //if (Physics.Raycast(transform.position + new Vector3(0, 0, 0), new Vector3(1f, 1f, 0), out hit, 3f))
@@ -136,4 +139,6 @@ public class PlayerController : MonoBehaviour
     //    if(transform.position.y <= 0.5f && transform.position.y > 0.49f)
     //        isGround = false;
     //}
+    
+
 }

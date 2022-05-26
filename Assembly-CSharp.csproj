@@ -61,11 +61,13 @@
     <Compile Include="Assets\Script\MapMove.cs" />
     <Compile Include="Assets\Script\Coin.cs" />
     <Compile Include="Assets\Script\PlayerController.cs" />
+    <Compile Include="Assets\Script\CatStatue.cs" />
+    <Compile Include="Assets\Script\MoveSkyBox.cs" />
     <Compile Include="Assets\Script\GameManager.cs" />
     <Compile Include="Assets\Script\MainLight.cs" />
     <Compile Include="Assets\Script\DestoryZon.cs" />
-    <Compile Include="Assets\Script\CatStatue.cs" />
-    <Compile Include="Assets\Script\MoveSkyBox.cs" />
+    <Compile Include="Assets\Script\CludeMove.cs" />
+    <Compile Include="Assets\Script\CludeMake.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\SkySeries Freebie\Hdri setup.txt" />
