@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class Coin : MonoBehaviour
 {
+    private void Awake()
+    {
+        transform.position += new Vector3(-0.5f, 0, 0);
+    }
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.tag.CompareTo("Player") == 0)

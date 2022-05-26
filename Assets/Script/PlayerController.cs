@@ -28,9 +28,9 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         OnGround();
-        DeadLine();
         if (!DataManager.Instance.PlayerDie)
         {
+            DeadLine();
             if (Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.Space))
             {
                 Jump();
@@ -118,14 +118,15 @@ public class PlayerController : MonoBehaviour
     void DeadLine()
     {
         RaycastHit hit;
-        //Debug.DrawLine
-        if (Physics.Raycast(playerPos.transform.position + new Vector3(0f, 0.1f, 0), Vector3.down, out hit, 0.5f) == false)
+        Debug.DrawRay(new Vector3(-2f, -0.4f, 0), Vector3.down * 2, Color.red);
+        if (!(Physics.Raycast(new Vector3(-2f, -0.4f, 0), Vector3.down, out hit, 2f)))
         {
             if (isGround)
             {
-                //DataManager.Instance.PlayerDie = true;
+                DataManager.Instance.PlayerDie = true;
             }
         }
+        //Debug.Log(hit.collider.gameObject.name);
     }
 
     //private void OnCollisionStay(Collision collision)
