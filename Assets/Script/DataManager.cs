@@ -27,6 +27,7 @@ public class DataManager : MonoBehaviour
     }
 
     public int Score = 0;
+    public int BestScore = 0;
     public bool PlayerDie = false;
 
 }

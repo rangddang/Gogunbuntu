@@ -4,11 +4,16 @@ using UnityEngine;
 
 public class MapMove : MonoBehaviour
 {
-    
     public float mapSpeed;
-    public float x;
+    public float x=0;
     public float saveX = 0;
     public GameObject[] Stage1Map;
+
+    private void Start()
+    {
+        x += 20;
+        saveX += 20;
+    }
 
     private void Update()
     {

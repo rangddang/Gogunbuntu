@@ -21,6 +21,8 @@ public class PlayerController : MonoBehaviour
     
     void Update()
     {
+        OnGround();
+        DeadLine();
         if (!DataManager.Instance.PlayerDie)
         {
             if (Input.GetKeyDown(KeyCode.Mouse0))
@@ -50,25 +52,48 @@ public class PlayerController : MonoBehaviour
 
             RaycastHit hit;
             Debug.DrawRay(transform.position + new Vector3(0, 0, 0), new Vector3(1f, 1f, 0) * 3f, Color.yellow);
-            if (Physics.Raycast(transform.position + new Vector3(0, 0, 0), new Vector3(1f, 1f, 0), out hit, 3f))
+
+            //if (Physics.Raycast(transform.position + new Vector3(0, 0, 0), new Vector3(1f, 1f, 0), out hit, 3f))
+            //{
+            //    //DataManager.Instance.PlayerDie = true;
+            //}
+        }
+    }
+
+    void OnGround()
+    {
+        //Debug.Log("ground");
+        if (transform.position.y > -0.51f && transform.position.y < -0.47f)
+        {
+            isGround = true;
+        }
+        else
+        {
+            isGround = false;
+        }
+    }
+
+    void DeadLine()
+    {
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position + new Vector3(-0.1f, 0, 0), Vector3.down, out hit, 2f) == false)
+        {
+            if (isGround)
             {
-                //DataManager.Instance.PlayerDie = true;
+                DataManager.Instance.PlayerDie = true;
             }
         }
     }
 
-    private void OnCollisionStay(Collision collision)
-    {
-        isGround = true;
-        RaycastHit hit;
-        if (Physics.Raycast(transform.position + new Vector3(-0.1f,0,0), Vector3.down, out hit, 2f) == false)
-        {
-            DataManager.Instance.PlayerDie = true;
-        }
-    }
+    //private void OnCollisionStay(Collision collision)
+    //{
+    //    isGround = true;
+        
+    //}
 
-    private void OnCollisionExit(Collision collision)
-    {
-        isGround = false;
-    }
+    //private void OnCollisionExit(Collision collision)
+    //{
+    //    if(transform.position.y <= 0.5f && transform.position.y > 0.49f)
+    //        isGround = false;
+    //}
 }
