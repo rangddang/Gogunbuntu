@@ -4,13 +4,19 @@ using UnityEngine;
 
 public class MapMove : MonoBehaviour
 {
+    
     public float mapSpeed;
+    public float x;
+    public float saveX = 0;
+    public GameObject[] Stage1Map;
 
     private void Update()
     {
+        
         if(!DataManager.Instance.PlayerDie)
         {
             transform.Translate(-mapSpeed * Time.deltaTime, 0, 0);
+            x += mapSpeed * Time.deltaTime;
         }
         else
         {
@@ -19,6 +25,20 @@ public class MapMove : MonoBehaviour
             else
                 mapSpeed = 0;
             transform.Translate(-mapSpeed * Time.deltaTime, 0, 0);
+        }
+        if(x >= 20)
+        {
+            saveX += 20;
+            int ran = Random.Range(0, Stage1Map.Length);
+            GameObject fish = Instantiate(Stage1Map[ran]) as GameObject;
+            fish.transform.position += new Vector3(saveX, 0, 0);
+            if (ran != 0 && ran != 3 && ran != 4)
+            {
+                saveX += 1;
+            }
+            fish.transform.SetParent(gameObject.transform, false);
+            x -= 20;
+            
         }
         
     }

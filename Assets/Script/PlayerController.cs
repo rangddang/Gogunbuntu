@@ -47,7 +47,13 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            //rigid.velocity = Vector3.up * jumpPower * 1.5f;
+
+            RaycastHit hit;
+            Debug.DrawRay(transform.position + new Vector3(0, 0, 0), new Vector3(1f, 1f, 0) * 3f, Color.yellow);
+            if (Physics.Raycast(transform.position + new Vector3(0, 0, 0), new Vector3(1f, 1f, 0), out hit, 3f))
+            {
+                //DataManager.Instance.PlayerDie = true;
+            }
         }
     }
 
