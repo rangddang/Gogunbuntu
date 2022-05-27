@@ -7,7 +7,8 @@ public class MapMove : MonoBehaviour
     public float mapSpeed;
     public float x=0;
     public float saveX = 0;
-    public GameObject[] Stage1Map;
+    public GameObject[] StageMap;
+
 
     private void Start()
     {
@@ -27,7 +28,7 @@ public class MapMove : MonoBehaviour
         else
         {
             if(mapSpeed> 0)
-                mapSpeed -= 35f * Time.deltaTime;
+                mapSpeed -= 50f * Time.deltaTime;
             else
                 mapSpeed = 0;
             transform.Translate(-mapSpeed * Time.deltaTime, 0, 0);
@@ -36,15 +37,15 @@ public class MapMove : MonoBehaviour
         {
             int ran;
             saveX += 20;
-            if(Random.Range(1,10+1) <= 6)
+            if (Random.Range(1, 10 + 1) <= 6)
                 ran = Random.Range(0, 4);
             else
-                ran = Random.Range(5, Stage1Map.Length);
-            GameObject fish = Instantiate(Stage1Map[ran]) as GameObject;
+                ran = Random.Range(11, StageMap.Length);
+            GameObject fish = Instantiate(StageMap[ran]) as GameObject;
             fish.transform.position += new Vector3(saveX, 0, 0);
             //if (ran != 0 && ran != 3 && ran != 4)
             //{
-            //    saveX += 1;
+            //    saveX += 4;
             //}
             fish.transform.SetParent(gameObject.transform, false);
             x -= 20;

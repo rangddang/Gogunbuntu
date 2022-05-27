@@ -16,7 +16,7 @@ public class CludeMake : MonoBehaviour
         {
             GameObject it = Instantiate(Clude);
             it.transform.position = new Vector3(40, Random.Range(-5f, -2f), Random.Range(8f, 10f));
-            yield return new WaitForSeconds(Random.Range(0.3f, 1f));
+            yield return new WaitForSeconds(Random.Range(0.3f, 0.7f));
         }
     }
 }
