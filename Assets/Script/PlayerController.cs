@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour
     {
         //PlayerPosSet();
         //OnGround();
-        //Debug.DrawRay(transform.position + new Vector3(0.1f, -0.8f, 0), Vector3.down * 0.73f, Color.red);
+        Debug.DrawRay(transform.position + new Vector3(0.1f, -1f, 0), Vector3.down * 0.75f, Color.red);
         if (!DataManager.Instance.PlayerDie)
         {
             if (Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.Space))
@@ -66,14 +66,14 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            if (GetComponent<SphereCollider>().enabled)
+            if (GetComponent<CapsuleCollider>().enabled)
             {
                 anim.SetBool("Player Die", true);
                 transform.position += new Vector3(0, 0, -0.6f);
                 rigid.velocity = Vector3.zero;
                 rigid.velocity = Vector3.up * 90f;
                 rigid.drag = 15f;
-                GetComponent<SphereCollider>().enabled = false;
+                GetComponent<CapsuleCollider>().enabled = false;
             }
         }
     }
@@ -159,7 +159,7 @@ public class PlayerController : MonoBehaviour
         {
             RaycastHit hit;
             //임마 문제 없음
-            if ((Physics.Raycast(transform.position + new Vector3(0.1f, -0.8f, 0), Vector3.down, out hit, 0.73f)))
+            if ((Physics.Raycast(transform.position + new Vector3(0.2f, -1f, 0), Vector3.down, out hit, 0.75f)))
             {
                 if (hit.collider.gameObject.tag != "Ground")
                 {
