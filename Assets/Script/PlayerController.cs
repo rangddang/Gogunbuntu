@@ -14,10 +14,13 @@ public class PlayerController : MonoBehaviour
     private float hookRotate;
     public float hookRotateSpeed = 0f;
     public float maxRotate = 60f;
+    public Animator anim;
+    public bool isJump;
 
     private void Awake()
     {
         rigid = GetComponent<Rigidbody>();
+        anim = GetComponent<Animator>();
     }
 
     void Start()
@@ -30,11 +33,12 @@ public class PlayerController : MonoBehaviour
     {
         //PlayerPosSet();
         //OnGround();
-        //Debug.DrawRay(transform.position + new Vector3(0.1f, -0.8f, 0), Vector3.down * 0.52f, Color.red);
+        //Debug.DrawRay(transform.position + new Vector3(0.1f, -0.8f, 0), Vector3.down * 0.73f, Color.red);
         if (!DataManager.Instance.PlayerDie)
         {
             if (Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.Space))
             {
+                isJump = true;
                 Jump();
             }
             if (isHook && hookRotate < maxRotate)
@@ -50,22 +54,26 @@ public class PlayerController : MonoBehaviour
             }
             if(!isHook && useHook && !isGround)
             {
-                transform.rotation *= Quaternion.Euler(0, 0, 720f * Time.deltaTime);
+                transform.rotation *= Quaternion.Euler(0, 0, 1080f * Time.deltaTime);
+                anim.SetInteger("Anim", 3);
             }
             else if (isGround)
             {
                 transform.rotation = Quaternion.Euler(0, 0, 0);
                 useHook=false;
             }
-            DeadLine();
+            //DeadLine();
         }
         else
         {
-            if (GetComponent<CapsuleCollider>().enabled)
+            if (GetComponent<SphereCollider>().enabled)
             {
+                anim.SetBool("Player Die", true);
                 transform.position += new Vector3(0, 0, -0.6f);
-                rigid.drag = 20f;
-                GetComponent<CapsuleCollider>().enabled = false;
+                rigid.velocity = Vector3.zero;
+                rigid.velocity = Vector3.up * 90f;
+                rigid.drag = 15f;
+                GetComponent<SphereCollider>().enabled = false;
             }
         }
     }
@@ -78,7 +86,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-
+            anim.SetInteger("Anim", 4);
             RaycastHit hit;
             Debug.DrawRay(transform.position + new Vector3(0, 0, 0), new Vector3(1f, 0.8f, 0) * 8f, Color.yellow);
             if (Physics.Raycast(transform.position + new Vector3(0, 0, 0), new Vector3(1f, 0.8f, 0), out hit, 8f))
@@ -90,6 +98,7 @@ public class PlayerController : MonoBehaviour
                     isHook = true;
                     useHook = true;
                     hookRotate = -30;
+                    anim.SetInteger("Anim", 2);
                 }
             }
         }
@@ -97,6 +106,7 @@ public class PlayerController : MonoBehaviour
 
     void Hook()
     {
+        isJump = true;
         hookRotate += hookRotateSpeed * Time.deltaTime;
         if (hookRotate > maxRotate) hookRotate = maxRotate;
 
@@ -108,7 +118,7 @@ public class PlayerController : MonoBehaviour
             transform.position = new Vector3(transform.position.x, transform.position.y + hookRotate * 0.4f * Time.deltaTime, transform.position.z);
         }
         else{
-            maxRotate = 30f;
+            maxRotate = 50f;
             rigid.useGravity = true;
             transform.rotation = Quaternion.Euler(0, 0, 0);
         }
@@ -117,10 +127,17 @@ public class PlayerController : MonoBehaviour
     void DeadLine()
     {
         RaycastHit hit;
-        Debug.DrawRay(new Vector3(-2.0f, -0.4f, 0), (Vector3.down + new Vector3(0.1f,0,0)) * 2, Color.red);
-        if (!(Physics.Raycast(new Vector3(-2.0f, -0.4f, 0), Vector3.down + new Vector3(0.1f, 0, 0), out hit, 2f)))
+        Debug.DrawRay(new Vector3(-2.1f, -0.4f, 0), (new Vector3(-0.01f,-1f,0)) * 2, Color.red);
+        if (!Physics.Raycast(new Vector3(-2.1f, -0.4f, 0),new Vector3(-0.01f, -1f, 0), out hit, 2f))
         {
             if (isGround && !DataManager.Instance.PlayerDie)
+            {
+                DataManager.Instance.PlayerDie = true;
+            }
+        }
+        else
+        {
+            if(isGround && hit.collider.gameObject.tag != "Ground")
             {
                 DataManager.Instance.PlayerDie = true;
             }
@@ -132,6 +149,7 @@ public class PlayerController : MonoBehaviour
         if(collision.gameObject.tag == "Ground")
         {
             isGround = true;
+            anim.SetInteger("Anim", 0);
         }
     }
 
@@ -140,15 +158,28 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.tag == "Ground")
         {
             RaycastHit hit;
-            
-            if ((Physics.Raycast(transform.position + new Vector3(0.1f, -0.8f, 0), Vector3.down, out hit, 0.52f)))
+            //임마 문제 없음
+            if ((Physics.Raycast(transform.position + new Vector3(0.1f, -0.8f, 0), Vector3.down, out hit, 0.73f)))
             {
-                if(hit.collider.gameObject.tag != "Ground")
+                if (hit.collider.gameObject.tag != "Ground")
+                {
+                    if (!isJump)
+                        DataManager.Instance.PlayerDie = true;
+
+                    isJump = false;
                     isGround = false;
+                    anim.SetInteger("Anim", 1);
+                }
             }
+            //임마가 문제임;;
             else
             {
+                if (!isJump)
+                    DataManager.Instance.PlayerDie = true;
+
                 isGround = false;
+                isJump = false;
+                anim.SetInteger("Anim", 1);
             }
         }
     }

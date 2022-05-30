@@ -8,11 +8,20 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public Text scoreText;
-    public bool gameOver = false;
+    public static bool gameOver = false;
     public GameObject GameOverScreen;
     public RectTransform[] gameOverTextPos;
     public float textSpeed;
     public TextMesh BestScoreText;
+
+    private void Start()
+    {
+        //Time.timeScale = 1.5f;
+        DataManager.Instance.PlayerDie = false;
+        gameOver = false;
+        GameOverScreen.SetActive(false);
+        DataManager.Instance.Score = 0;
+    }
 
     private void Update()
     {

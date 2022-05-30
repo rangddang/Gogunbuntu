@@ -8,6 +8,12 @@ public class CatStatue : MonoBehaviour
     public float yMax = 1;
     public float ySpeed = 3;
     float yPos;
+    public Animator anim;
+
+    private void Awake()
+    {
+        anim = GetComponent<Animator>();
+    }
 
     private void Start()
     {
@@ -19,6 +25,7 @@ public class CatStatue : MonoBehaviour
         if (DataManager.Instance.PlayerDie)
         {
             PlayerDead();
+            anim.SetBool("Player Die", true);
         }
     }
 
