@@ -29,6 +29,10 @@ public class GameManager : MonoBehaviour
         Score();
         if (DataManager.Instance.PlayerDie)
         {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                GameStart();
+            }
             gameOver = true;
         }
         if (gameOver)

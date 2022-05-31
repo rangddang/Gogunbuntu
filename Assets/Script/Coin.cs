@@ -6,7 +6,7 @@ public class Coin : MonoBehaviour
 {
     private void Awake()
     {
-        transform.position += new Vector3(-0.5f, 0, 0);
+        //transform.position += new Vector3(-0.5f, 0, 0);
     }
     private void OnTriggerEnter(Collider other)
     {

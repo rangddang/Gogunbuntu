@@ -30,37 +30,44 @@ public class PlayerController : MonoBehaviour
     
     void Update()
     {
-        //PlayerPosSet();
-        //OnGround();
-        Debug.DrawRay(transform.position + new Vector3(0.0f, -1f, 0), Vector3.down * 0.75f, Color.red);
+        //Debug.DrawRay(transform.position + new Vector3(0.0f, -1f, 0), Vector3.down * 0.75f, Color.red);
+        //플레이어가 죽지 않았을때 (!게임오버)
         if (!DataManager.Instance.PlayerDie)
         {
             if (Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.Space))
-            {
+            {//점프키를 눌렀을때
                 isJump = true;
                 Jump();
             }
             if (isHook && hookRotate < maxRotate)
-            {
+            {//와이어를 발사하고 맞추면
                 Hook();
             }
             if (hookRotate >= maxRotate)
-            {
+            {//와이어를 다 탔을때
                 rigid.useGravity = true;
                 isHook = false;
-                rigid.velocity = Vector3.up * 35f;
+                rigid.velocity = Vector3.up * 25f;
                 hookRotate = 0f;
             }
             if(!isHook && useHook && !isGround)
-            {
+            {//와이어를 다 타고 공중에 있을때
                 playerSprite.transform.rotation *= Quaternion.Euler(0, 0, 1080f * Time.deltaTime);
                 anim.SetInteger("Anim", 3);
             }
             else if (isGround)
-            {
+            {//공중에서 땅으로 닿았을때
                 playerSprite.transform.rotation = Quaternion.Euler(0, 0, 0);
                 useHook=false;
             }
+            if (!isGround)
+            {
+                //Dead Line(야메)
+                if (!isJump && (transform.position.y < -0.4f || transform.position.y > 0.4f))
+                    DataManager.Instance.PlayerDie = true;
+                
+            }
+
             //DeadLine();
         }
         else
@@ -109,7 +116,7 @@ public class PlayerController : MonoBehaviour
         hookRotate += hookRotateSpeed * Time.deltaTime;
         if (hookRotate > maxRotate) hookRotate = maxRotate;
 
-        if (Input.GetKey(KeyCode.Mouse0))
+        if (Input.GetKey(KeyCode.Mouse0) || Input.GetKey(KeyCode.Space))
         {
             rigid.useGravity = false;
             playerSprite.transform.rotation = Quaternion.Euler(0, 0, hookRotate);
@@ -149,6 +156,7 @@ public class PlayerController : MonoBehaviour
             //isJump = false;
             playerSprite.transform.rotation = Quaternion.Euler(0, 0, 0);
             isGround = true;
+            isJump = false;
             anim.SetInteger("Anim", 0);
         }
     }
@@ -162,10 +170,6 @@ public class PlayerController : MonoBehaviour
             {
                 if (hit.collider.gameObject.tag != "Ground")
                 {
-                    if (!isJump)
-                        DataManager.Instance.PlayerDie = true;
-
-                    isJump = false;
                     isGround = false;
                     anim.SetInteger("Anim", 1);
                 }
@@ -173,11 +177,6 @@ public class PlayerController : MonoBehaviour
             //임마가 제일 문제임;;
             else
             {
-                //Dead Line(야메)
-                if (!isJump)
-                    DataManager.Instance.PlayerDie = true;
-
-                isJump = false;
                 isGround = false;
                 anim.SetInteger("Anim", 1);
             }

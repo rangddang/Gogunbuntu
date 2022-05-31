@@ -46,10 +46,11 @@ public class MapMove : MonoBehaviour
                 ran = Random.Range(4, StageMap.Length);
             GameObject fish = Instantiate(StageMap[ran]) as GameObject;
             fish.transform.position += new Vector3(saveX, 0, 0);
-            //if (ran != 0 && ran != 3 && ran != 4)
-            //{
-            //    saveX += 4;
-            //}
+            if (ran >= 16 && ran <= 21)
+            {
+                x -= 8;
+                saveX += 8;
+            }
             fish.transform.SetParent(gameObject.transform, false);
             x -= 20;
             
