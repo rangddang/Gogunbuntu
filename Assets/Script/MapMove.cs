@@ -10,10 +10,12 @@ public class MapMove : MonoBehaviour
     public float saveX = 0;
     public GameObject[] StageMap;
     public Slider StageSlider;
+    public int Stage = 1;
 
 
     private void Start()
     {
+        StartCoroutine(ChangeStage());
         x += 20;
         //saveX += 20;
     }
@@ -24,7 +26,7 @@ public class MapMove : MonoBehaviour
         if(!DataManager.Instance.PlayerDie)
         {
             transform.Translate(-mapSpeed * Time.deltaTime, 0, 0);
-            mapSpeed += 0.1f * Time.deltaTime;
+            //mapSpeed += 0.1f * Time.deltaTime;
             StageSlider.value = (mapSpeed - 13) * 0.02f;
             x += mapSpeed * Time.deltaTime;
         }
@@ -56,5 +58,15 @@ public class MapMove : MonoBehaviour
             
         }
         
+    }
+
+    IEnumerator ChangeStage()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(15f);
+            Stage++;
+            mapSpeed = 10 + (Stage * 4);
+        }
     }
 }

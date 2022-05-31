@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 149357394}
-  m_IndirectSpecularColor: {r: 0, g: 0.11077986, b: 0.13325003, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0.08165399, b: 0.100965016, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1253,7 +1253,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c9f33bbb2c28944298aeb7351608665, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mapSpeed: 13
+  mapSpeed: 14
   x: 0
   saveX: 0
   StageMap:
@@ -1280,6 +1280,7 @@ MonoBehaviour:
   - {fileID: 6248250245365734256, guid: 044cb276b785af94fb4438dc986ef4c3, type: 3}
   - {fileID: 6248250245365734256, guid: 044cb276b785af94fb4438dc986ef4c3, type: 3}
   StageSlider: {fileID: 216855501}
+  Stage: 1
 --- !u!4 &508197965
 Transform:
   m_ObjectHideFlags: 0

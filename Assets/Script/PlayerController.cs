@@ -63,8 +63,8 @@ public class PlayerController : MonoBehaviour
             if (!isGround)
             {
                 //Dead Line(야메)
-                if (!isJump && (transform.position.y < -0.4f || transform.position.y > 0.4f))
-                    DataManager.Instance.PlayerDie = true;
+                //if (!isJump && (transform.position.y < -0.4f || transform.position.y > 0.4f))
+                //    DataManager.Instance.PlayerDie = true;
                 
             }
 
@@ -174,7 +174,6 @@ public class PlayerController : MonoBehaviour
                     anim.SetInteger("Anim", 1);
                 }
             }
-            //임마가 제일 문제임;;
             else
             {
                 isGround = false;
