@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 149357394}
-  m_IndirectSpecularColor: {r: 0, g: 0.08165399, b: 0.100965016, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0.09305688, b: 0.112673126, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1280,7 +1280,6 @@ MonoBehaviour:
   - {fileID: 6248250245365734256, guid: 044cb276b785af94fb4438dc986ef4c3, type: 3}
   - {fileID: 6248250245365734256, guid: 044cb276b785af94fb4438dc986ef4c3, type: 3}
   StageSlider: {fileID: 216855501}
-  Stage: 1
 --- !u!4 &508197965
 Transform:
   m_ObjectHideFlags: 0
@@ -8017,7 +8016,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 887994883670412107, guid: f2fef0656ddf35b47ac17aba2587636c, type: 3}
+  m_Sprite: {fileID: 887994883670412107, guid: f23600a96705d8d4ab68e13399d5787a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

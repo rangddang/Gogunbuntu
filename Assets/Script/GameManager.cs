@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     public RectTransform[] gameOverTextPos;
     public float textSpeed;
     public TextMesh BestScoreText;
+    public static int Stage = 1;
 
     private void Start()
     {

@@ -10,7 +10,6 @@ public class MapMove : MonoBehaviour
     public float saveX = 0;
     public GameObject[] StageMap;
     public Slider StageSlider;
-    public int Stage = 1;
 
 
     private void Start()
@@ -65,8 +64,8 @@ public class MapMove : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(15f);
-            Stage++;
-            mapSpeed = 10 + (Stage * 4);
+            GameManager.Stage++;
+            mapSpeed = 10 + (GameManager.Stage * 4);
         }
     }
 }
