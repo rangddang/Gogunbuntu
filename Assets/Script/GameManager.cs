@@ -84,6 +84,7 @@ public class GameManager : MonoBehaviour
         gameOver = false;
         GameOverScreen.SetActive(false);
         DataManager.Instance.Score = 0;
+        Stage = 1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

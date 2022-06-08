@@ -16,6 +16,8 @@ public class PlayerController : MonoBehaviour
     public Animator anim;
     public bool isJump;
     public GameObject playerSprite;
+    public Vector3 RopePos = new Vector3(1f, 0.8f, 0);
+    public float RopeSize = 8;
 
     private void Awake()
     {
@@ -47,7 +49,7 @@ public class PlayerController : MonoBehaviour
             {//와이어를 다 탔을때
                 rigid.useGravity = true;
                 isHook = false;
-                rigid.velocity = Vector3.up * 25f;
+                rigid.velocity = Vector3.up * 40f;
                 hookRotate = 0f;
             }
             if(!isHook && useHook && !isGround)
@@ -94,8 +96,8 @@ public class PlayerController : MonoBehaviour
         {
             anim.SetInteger("Anim", 4);
             RaycastHit hit;
-            Debug.DrawRay(transform.position + new Vector3(0, 0, 0), new Vector3(1f, 0.8f, 0) * 8f, Color.yellow);
-            if (Physics.Raycast(transform.position + new Vector3(0, 0, 0), new Vector3(1f, 0.8f, 0), out hit, 8f))
+            Debug.DrawRay(transform.position + new Vector3(0, 0, 0), RopePos * RopeSize, Color.yellow);
+            if (Physics.Raycast(transform.position + new Vector3(0, 0, 0), RopePos, out hit, RopeSize))
             {
                 if (!isHook && hit.collider.gameObject.tag == "Roof")
                 {
@@ -103,7 +105,7 @@ public class PlayerController : MonoBehaviour
                     transform.position += new Vector3(0, hookRotate * -0.4f, 0);
                     isHook = true;
                     useHook = true;
-                    hookRotate = -30;
+                    hookRotate = -50;
                     anim.SetInteger("Anim", 2);
                 }
             }
@@ -121,6 +123,8 @@ public class PlayerController : MonoBehaviour
             rigid.useGravity = false;
             playerSprite.transform.rotation = Quaternion.Euler(0, 0, hookRotate);
             rigid.velocity = new Vector3(0, 0, 0);
+            if(maxRotate > 60)
+                maxRotate = 60;
             transform.position = new Vector3(transform.position.x, transform.position.y + hookRotate * 0.4f * Time.deltaTime, transform.position.z);
         }
         else{

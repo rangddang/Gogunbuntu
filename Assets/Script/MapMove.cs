@@ -61,11 +61,14 @@ public class MapMove : MonoBehaviour
 
     IEnumerator ChangeStage()
     {
-        while (true)
+        while (!DataManager.Instance.PlayerDie)
         {
             yield return new WaitForSeconds(15f);
-            GameManager.Stage++;
-            mapSpeed = 10 + (GameManager.Stage * 4);
+            if (!DataManager.Instance.PlayerDie)
+            {
+                GameManager.Stage++;
+                mapSpeed = 11 + (GameManager.Stage * 3);
+            }
         }
     }
 }
