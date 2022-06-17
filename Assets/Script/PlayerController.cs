@@ -18,6 +18,10 @@ public class PlayerController : MonoBehaviour
     public GameObject playerSprite;
     public Vector3 RopePos = new Vector3(1f, 0.8f, 0);
     public float RopeSize = 8;
+    private float moveX = 0;
+    [SerializeField] private float moveSpeed = 1;
+    [SerializeField] private float moveMax;
+    private int moveTogle = 0;
 
     private void Awake()
     {
@@ -32,10 +36,38 @@ public class PlayerController : MonoBehaviour
     
     void Update()
     {
+        
         //Debug.DrawRay(transform.position + new Vector3(0.0f, -1f, 0), Vector3.down * 0.75f, Color.red);
         //플레이어가 죽지 않았을때 (!게임오버)
         if (!DataManager.Instance.PlayerDie)
         {
+            if (isGround) {
+                if (moveTogle == 0)
+                {
+                    moveX += moveSpeed * Time.deltaTime;
+                    if (moveX >= moveMax)
+                    {
+                        moveTogle = 1;
+                        moveX =  moveMax;
+                    }
+                }
+                else if (moveTogle == 1)
+                {
+                    moveX -= moveSpeed * 0.3f * Time.deltaTime;
+                    if (moveX <= 0)
+                    {
+                        moveTogle = 0;
+                        moveX = 0;
+                    }
+                }
+                playerSprite.transform.localPosition = new Vector3(moveX,0,0);
+            }
+            else
+            {
+                moveTogle = 0;
+                moveX = 0;
+                playerSprite.transform.localPosition = new Vector3(0, 0, 0);
+            }
             if (Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.Space))
             {//점프키를 눌렀을때
                 isJump = true;
@@ -49,7 +81,7 @@ public class PlayerController : MonoBehaviour
             {//와이어를 다 탔을때
                 rigid.useGravity = true;
                 isHook = false;
-                rigid.velocity = Vector3.up * 40f;
+                rigid.velocity = Vector3.up * 35f;
                 hookRotate = 0f;
             }
             if(!isHook && useHook && !isGround)
