@@ -14,7 +14,7 @@ public class MapMove : MonoBehaviour
 
 	private void Update()
 	{
-		if (DataManager.Instance.PlayerDie)
+		if (DataManager.Instance.isDead)
 			return;
 		currentDistance += Time.deltaTime * moveSpeed;
 		transform.position += Vector3.left * Time.deltaTime * moveSpeed;

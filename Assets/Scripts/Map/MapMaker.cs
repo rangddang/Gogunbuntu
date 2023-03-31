@@ -1,11 +1,16 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class MapMaker : MonoBehaviour
 {
-	public List<GameObject> stageMap1 = new List<GameObject>();
-	public List<GameObject> stageMap2 = new List<GameObject>();
+	[Serializable] public class Map
+	{
+		public List<GameObject> map = new List<GameObject>();
+	}
+
+	public List<Map> stageMap = new List<Map>();
 
 	private MapMove mapMove;
 
@@ -18,12 +23,13 @@ public class MapMaker : MonoBehaviour
 	{
 		if (mapMove.currentDistance > mapMove.maxDistance)
 		{
-			int random = Random.Range(0, stageMap1.Count);
-
-			mapMove.maxDistance = 20;
+			int random = UnityEngine.Random.Range(0, stageMap[DataManager.Instance.Stage - 1].map.Count);
+			GameObject go = Instantiate(stageMap[DataManager.Instance.Stage - 1].map[random]);
+			
 			mapMove.distance += mapMove.maxDistance;
 			mapMove.currentDistance -= mapMove.maxDistance;
-			GameObject go = Instantiate(stageMap1[random], transform.localPosition + Vector3.right * mapMove.distance, Quaternion.identity);
+			mapMove.maxDistance = go.GetComponent<MapDistance>().Distance;
+			go.transform.position = transform.localPosition + Vector3.right * mapMove.distance;
 			go.transform.parent = transform;
 		}
 	}

@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         if (!DataManager.Instance.gameStart) return;
-        DataManager.Instance.PlayerDie = false;
+        DataManager.Instance.isDead = false;
         DataManager.Instance.gameStart = true;
         gameOver = false;
         GameOverScreen.SetActive(false);
@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour
         if (!DataManager.Instance.gameStart) return;
 		//점수 표시
 		scoreText.text = DataManager.Instance.Score.ToString();
-		if (DataManager.Instance.PlayerDie)
+		if (DataManager.Instance.isDead)
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
@@ -88,7 +88,7 @@ public class GameManager : MonoBehaviour
 
     public void ReStart()
     {
-        DataManager.Instance.PlayerDie = false;
+        DataManager.Instance.isDead = false;
         gameOver = false;
         GameOverScreen.SetActive(false);
         DataManager.Instance.Score = 0;

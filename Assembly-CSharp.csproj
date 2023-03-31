@@ -56,22 +56,22 @@
     <Analyzer Include="C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\DeadZone.cs" />
+    <Compile Include="Assets\Scripts\Object\DeadZone.cs" />
     <Compile Include="Assets\Scripts\Manager\DataManager.cs" />
     <Compile Include="Assets\Scripts\Manager\SoundManager.cs" />
-    <Compile Include="Assets\Scripts\Coin.cs" />
+    <Compile Include="Assets\Scripts\Object\Coin.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerController.cs" />
-    <Compile Include="Assets\Scripts\CatStatue.cs" />
+    <Compile Include="Assets\Scripts\Object\CatStatue.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerActive.cs" />
-    <Compile Include="Assets\Scripts\MoveSkyBox.cs" />
+    <Compile Include="Assets\Scripts\Object\MoveSkyBox.cs" />
     <Compile Include="Assets\Scripts\Manager\GameManager.cs" />
-    <Compile Include="Assets\Scripts\MainLight.cs" />
+    <Compile Include="Assets\Scripts\Object\MainLight.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerSprite.cs" />
-    <Compile Include="Assets\Scripts\Camera.cs" />
-    <Compile Include="Assets\Scripts\DestoryZone.cs" />
+    <Compile Include="Assets\Scripts\Map\MapDistance.cs" />
     <Compile Include="Assets\Scripts\Manager\InputManager.cs" />
     <Compile Include="Assets\Scripts\Map\MapMove.cs" />
     <Compile Include="Assets\Scripts\Map\MapMaker.cs" />
+    <Compile Include="Assets\Scripts\Manager\UIManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
