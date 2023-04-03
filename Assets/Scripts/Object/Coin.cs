@@ -5,8 +5,6 @@ using UnityEngine;
 public class Coin : MonoBehaviour
 {
     public AudioClip clip;
-    [SerializeField]
-    private bool isGold = false;
 
     private void Start()
     {
@@ -17,19 +15,19 @@ public class Coin : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Player") == true)
         {
-            if(!isGold)
+            if(transform.tag == "Coin")
             {
                 DataManager.Instance.Score += 5;
-                SoundManager.Instance.SFXPlay("Coin", clip);
             }
-            else if(isGold)
+            else if(transform.tag == "Gold_Coin")
             {
                 DataManager.Instance.Score += 50 - (5*(DataManager.Instance.Stage - 1));
-                SoundManager.Instance.SFXPlay("Gold Coin", clip);
+                transform.parent.transform.parent.transform.parent.GetComponent<MapSetting>().currentGoldCoins++;
             }
 
-            //Debug.Log(DataManager.Instance.Score);
-            Destroy(gameObject);
+			SoundManager.Instance.SFXPlay(transform.tag, clip);
+
+			gameObject.SetActive(false);
         }
     }
 }

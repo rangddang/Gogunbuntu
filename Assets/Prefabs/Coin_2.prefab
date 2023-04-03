@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5171623617488487977}
   m_Layer: 0
   m_Name: Coin_2
-  m_TagString: Coin
+  m_TagString: Gold_Coin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -99,6 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clip: {fileID: 8300000, guid: 4b4c0af0ec597184d97f2f05d24516b1, type: 3}
+  isGold: 0
 --- !u!135 &5171623617488487977
 SphereCollider:
   m_ObjectHideFlags: 0

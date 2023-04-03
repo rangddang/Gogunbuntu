@@ -55,7 +55,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7526405898265274331}
-  - component: {fileID: -8255842628171904725}
+  - component: {fileID: -5973087381927031099}
   m_Layer: 0
   m_Name: Map 1 - 7
   m_TagString: Untagged
@@ -79,7 +79,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-8255842628171904725
+--- !u!114 &-5973087381927031099
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -88,10 +88,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 7526405898265274309}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b28b4549b63dc004bbd6b015423298fe, type: 3}
+  m_Script: {fileID: 11500000, guid: 8931dae3a4cd4284d9da396684f9de7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distance: 20
 --- !u!1 &8290762804409984468
 GameObject:
   m_ObjectHideFlags: 0

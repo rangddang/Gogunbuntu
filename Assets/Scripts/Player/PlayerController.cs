@@ -24,9 +24,6 @@ public class PlayerController : MonoBehaviour
 
 	private bool OnGrounded()
 	{
-        bool a = Physics.BoxCast(transform.position, new Vector3(1.5f, 0.3f, 1f) * 0.5f, Vector3.down, Quaternion.identity, 1.6f, jumpableGround);
-
-        Debug.Log(a);
-        return a;
+        return Physics.BoxCast(transform.position, new Vector3(1.5f, 0.3f, 1f) * 0.5f, Vector3.down, Quaternion.identity, 1.6f, jumpableGround);
 	}
 }

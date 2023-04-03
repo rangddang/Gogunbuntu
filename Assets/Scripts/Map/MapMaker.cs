@@ -28,7 +28,7 @@ public class MapMaker : MonoBehaviour
 			
 			mapMove.distance += mapMove.maxDistance;
 			mapMove.currentDistance -= mapMove.maxDistance;
-			mapMove.maxDistance = go.GetComponent<MapDistance>().Distance;
+			mapMove.maxDistance = go.GetComponent<MapSetting>().Distance;
 			go.transform.position = transform.localPosition + Vector3.right * mapMove.distance;
 			go.transform.parent = transform;
 		}
