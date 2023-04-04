@@ -347,6 +347,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8931dae3a4cd4284d9da396684f9de7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  distance: 32
+  currentGoldCoins: 0
 --- !u!1 &2160096705558002316
 GameObject:
   m_ObjectHideFlags: 0

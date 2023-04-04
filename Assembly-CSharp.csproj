@@ -58,6 +58,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Object\DeadZone.cs" />
     <Compile Include="Assets\Scripts\Manager\DataManager.cs" />
+    <Compile Include="Assets\Scripts\Map\MapSetting.cs" />
     <Compile Include="Assets\Scripts\Manager\SoundManager.cs" />
     <Compile Include="Assets\Scripts\Object\Coin.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerController.cs" />
@@ -68,10 +69,9 @@
     <Compile Include="Assets\Scripts\Object\MainLight.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerSprite.cs" />
     <Compile Include="Assets\Scripts\Manager\InputManager.cs" />
+    <Compile Include="Assets\Scripts\UI\UIController.cs" />
     <Compile Include="Assets\Scripts\Map\MapMove.cs" />
     <Compile Include="Assets\Scripts\Map\MapMaker.cs" />
-    <Compile Include="Assets\Scripts\UI\UIController.cs" />
-    <Compile Include="Assets\Scripts\Map\MapSetting.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

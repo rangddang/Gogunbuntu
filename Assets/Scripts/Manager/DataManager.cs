@@ -22,14 +22,13 @@ public class DataManager : MonoBehaviour
         }
         else
         {
-            DestroyObject(gameObject);
+            Destroy(gameObject);
         }
     }
 
     public int Score = 0;
     public int BestScore = 0;
+    public int Stage = 0;
     public bool isDead = false;
-    public bool gameStart = false;
-    public int Stage = 1;
 
 }

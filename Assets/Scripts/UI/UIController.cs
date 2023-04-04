@@ -8,6 +8,7 @@ public class UIController : MonoBehaviour
 {
     [SerializeField] private GameObject gameOverPanel;
     [SerializeField] private TextMeshProUGUI scoreText;
+    [SerializeField] private TextMesh bestScoreText;
 
     private void Start()
     {
@@ -17,7 +18,8 @@ public class UIController : MonoBehaviour
     private void Update()
     {
         scoreText.text = DataManager.Instance.Score.ToString();
-        if (DataManager.Instance.isDead)
+		bestScoreText.text = DataManager.Instance.BestScore.ToString("0000000");
+		if (DataManager.Instance.isDead)
         {
             gameOverPanel.SetActive(true);
         }

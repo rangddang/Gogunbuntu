@@ -21,7 +21,7 @@ public class Coin : MonoBehaviour
             }
             else if(transform.tag == "Gold_Coin")
             {
-                DataManager.Instance.Score += 50 - (5*(DataManager.Instance.Stage - 1));
+                DataManager.Instance.Score += 50 - (5 * DataManager.Instance.Stage);
                 transform.parent.transform.parent.transform.parent.GetComponent<MapSetting>().currentGoldCoins++;
             }
 

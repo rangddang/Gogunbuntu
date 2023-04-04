@@ -23,8 +23,8 @@ public class MapMaker : MonoBehaviour
 	{
 		if (mapMove.currentDistance > mapMove.maxDistance)
 		{
-			int random = UnityEngine.Random.Range(0, stageMap[DataManager.Instance.Stage - 1].map.Count);
-			GameObject go = Instantiate(stageMap[DataManager.Instance.Stage - 1].map[random]);
+			int random = UnityEngine.Random.Range(0, stageMap[DataManager.Instance.Stage].map.Count);
+			GameObject go = Instantiate(stageMap[DataManager.Instance.Stage].map[random]);
 			
 			mapMove.distance += mapMove.maxDistance;
 			mapMove.currentDistance -= mapMove.maxDistance;

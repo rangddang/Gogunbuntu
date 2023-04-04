@@ -9,7 +9,7 @@ public class MapSetting : MonoBehaviour
 
 	public int currentGoldCoins = 0;
 	private int maxGoldCoins;
-	private bool isGold;
+	private bool isGoldMap;
 
 	private void Awake()
 	{
@@ -22,7 +22,7 @@ public class MapSetting : MonoBehaviour
 
 		if (maxGoldCoins > 0)
 		{
-			isGold = true;
+			isGoldMap = true;
 		}
 	}
 
@@ -33,10 +33,16 @@ public class MapSetting : MonoBehaviour
 			Destroy(gameObject);
 		}
 
-		if(currentGoldCoins == maxGoldCoins && isGold)
+		if(currentGoldCoins == maxGoldCoins && isGoldMap)
 		{
-			isGold = false;
-			Debug.Log("Bonus!");
+			Bonus();
 		}
+	}
+
+	private void Bonus()
+	{
+		isGoldMap = false;
+		DataManager.Instance.Score += 200;
+		Debug.Log("Bonus!");
 	}
 }

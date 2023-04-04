@@ -8,6 +8,8 @@ public class DeadZone : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            if(DataManager.Instance.Score > DataManager.Instance.BestScore)
+                DataManager.Instance.BestScore = DataManager.Instance.Score;
             DataManager.Instance.isDead = true;
         }
     }

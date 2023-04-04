@@ -2,30 +2,44 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum CatAnimation
+{
+    Nomal,
+    Blink1,
+    Blink2,
+    Suprising,
+	Laugh
+}
+
 public class CatStatue : MonoBehaviour
 {
+    [SerializeField] private Transform catHead;
+    private Animator anim;
+
     int yBool = 1;
-    public float yMax = 1;
-    public float ySpeed = 3;
+    public float yMax = 0.3f;
+    public float ySpeed = 10;
     float yPos;
     int xBool = 1;
-    public float xMax = 1;
-    public float xSpeed = 3;
-    public Animator anim;
-    public int randInt;
+    public float xMax = 0.2f;
+    public float xSpeed = 4;
 
     private void Awake()
     {
-        anim = GetComponent<Animator>();
+        anim = catHead.GetComponent<Animator>();
     }
 
     private void Start()
     {
         yPos = transform.position.y;
-        StartCoroutine(rRand());
     }
 
-    void Update()
+    public void SetAnimation(CatAnimation catAnim)
+    {
+        anim.SetInteger("Anim", (int)catAnim);
+    }
+
+    private void Update()
     {
         //Sup();
 
@@ -33,27 +47,7 @@ public class CatStatue : MonoBehaviour
         {
             PlayerDead();
             transform.position = new Vector3(0, transform.position.y, transform.position.z);
-            anim.SetBool("Player Die", true);
             return;
-        }
-
-        switch (randInt)
-        {
-            case 0:
-                anim.SetBool("Sup", false);
-                anim.SetInteger("Blink", 0);
-                break;
-            case 1:
-                anim.SetInteger("Blink", 1);
-                break;
-            case 2:
-                anim.SetInteger("Blink", 2);
-                break;
-            case 3:
-                anim.SetInteger("Blink", 0);
-                anim.SetBool("Sup", true);
-                Sup();
-                break;
         }
     }
 
@@ -83,22 +77,6 @@ public class CatStatue : MonoBehaviour
         {
             transform.Translate(Vector3.right * xBool * xSpeed * Time.deltaTime);
 
-        }
-    }
-
-    IEnumerator rRand()
-    {
-        while (!DataManager.Instance.isDead)
-        {
-            yield return new WaitForSeconds(Random.Range(5f,10f));
-            randInt = Random.Range(0, 4);
-            if(randInt == 1)
-                yield return new WaitForSeconds(0.4f);
-            else if (randInt == 2)
-                yield return new WaitForSeconds(2f);
-            else
-                yield return new WaitForSeconds(3f);
-            randInt = 0;
         }
     }
 }
