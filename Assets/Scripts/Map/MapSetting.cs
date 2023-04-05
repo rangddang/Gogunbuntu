@@ -44,5 +44,6 @@ public class MapSetting : MonoBehaviour
 		isGoldMap = false;
 		DataManager.Instance.Score += 200;
 		Debug.Log("Bonus!");
+		FindObjectOfType<CatStatue>().SetAnimation(CatAnimation.Blink1);
 	}
 }

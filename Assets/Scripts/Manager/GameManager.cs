@@ -8,9 +8,9 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
-    public RectTransform[] gameOverTextPos;
-    public float textSpeed;
-    public AudioSource backMusic;
+    [SerializeField] private UIController ui;
+    [SerializeField] private AudioSource backMusic;
+    [SerializeField] private CatStatue catStatue;
 
     private void Start()
     {
@@ -21,19 +21,11 @@ public class GameManager : MonoBehaviour
     {
 		if (DataManager.Instance.isDead)
         {
-            GameOver();
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 GameStart();
             }
-            backMusic.Stop();
         }
-    }
-
-    public void GameOver()
-    {
-        gameOverTextPos[0].localPosition = new Vector3(Random.Range(-textSpeed, textSpeed + 1) + -60, Random.Range(-textSpeed, textSpeed + 1) + 90, 0);
-        gameOverTextPos[1].localPosition = new Vector3(Random.Range(-textSpeed, textSpeed + 1) + 65, Random.Range(-textSpeed, textSpeed + 1) + 90, 0);
     }
 
     public void GameStart()
@@ -41,6 +33,13 @@ public class GameManager : MonoBehaviour
         StartSettings();
 		SceneManager.LoadScene("Game");
 	}
+
+    public void GameOver()
+    {
+        ui.GameOver();
+        backMusic.Stop();
+        catStatue.SetAnimation(CatAnimation.Laugh);
+    }
 
     private void StartSettings()
     {

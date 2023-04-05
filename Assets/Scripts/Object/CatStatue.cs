@@ -36,47 +36,18 @@ public class CatStatue : MonoBehaviour
 
     public void SetAnimation(CatAnimation catAnim)
     {
-        anim.SetInteger("Anim", (int)catAnim);
+		anim.SetInteger("Anim", (int)CatAnimation.Nomal);
+		anim.SetInteger("Anim", (int)catAnim);
+        StopCoroutine("SetNomalAnim");
+        if(catAnim == CatAnimation.Blink1 || catAnim == CatAnimation.Blink2)
+        {
+            StartCoroutine("SetNomalAnim");
+        }
     }
 
-    private void Update()
+    private IEnumerator SetNomalAnim()
     {
-        //Sup();
-
-        if (DataManager.Instance.isDead)
-        {
-            PlayerDead();
-            transform.position = new Vector3(0, transform.position.y, transform.position.z);
-            return;
-        }
-    }
-
-    void PlayerDead()
-    {
-        if ((transform.position.y > yMax + yPos && yBool == 1) || (transform.position.y < (yMax * -1) + yPos && yBool == -1))
-        {
-            //Debug.Log("방향전환" + yBool);
-            transform.position = new Vector3(transform.position.x, yPos + (yBool * yMax), transform.position.z);
-            yBool *= -1;
-        }
-        else
-        {
-            transform.Translate(Vector3.up * yBool * ySpeed * Time.deltaTime);
-
-        }
-    }
-
-    void Sup()
-    {
-        if ((transform.position.x > xMax && xBool == 1) || (transform.position.x < -xMax && xBool ==-1))
-        {
-            transform.position = new Vector3(xBool * xMax, transform.position.y, transform.position.z);
-            xBool *= -1;
-        }
-        else
-        {
-            transform.Translate(Vector3.right * xBool * xSpeed * Time.deltaTime);
-
-        }
-    }
+        yield return new WaitForSeconds(1f);
+		anim.SetInteger("Anim", (int)CatAnimation.Nomal);
+	}
 }

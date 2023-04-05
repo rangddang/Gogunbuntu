@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class DeadZone : MonoBehaviour
 {
+    [SerializeField] private GameManager gameManager;
+
     private void OnTriggerStay(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            if(DataManager.Instance.Score > DataManager.Instance.BestScore)
-                DataManager.Instance.BestScore = DataManager.Instance.Score;
             DataManager.Instance.isDead = true;
+            gameManager.GameOver();
         }
     }
 }
