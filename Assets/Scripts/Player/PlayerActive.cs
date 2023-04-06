@@ -8,6 +8,7 @@ public class PlayerActive : MonoBehaviour
 
     [SerializeField] private SoundManager soundManager;
     [SerializeField] private AudioClip jumpSound;
+    [SerializeField] private WireController wire;
 
     [SerializeField] private float jumpPower = 25f;
 
@@ -23,5 +24,8 @@ public class PlayerActive : MonoBehaviour
         soundManager.SFXPlay("Jump", jumpSound);
     }
 
-    
+    public void JumpShot()
+    {
+
+    }
 }

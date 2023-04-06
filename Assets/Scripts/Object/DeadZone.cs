@@ -10,7 +10,6 @@ public class DeadZone : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            DataManager.Instance.isDead = true;
             gameManager.GameOver();
         }
     }

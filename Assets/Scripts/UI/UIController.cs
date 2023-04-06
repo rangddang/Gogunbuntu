@@ -35,8 +35,8 @@ public class UIController : MonoBehaviour
     {
         while (true)
         {
-            gameOverTextPos[0].localPosition = new Vector3(Random.Range(-textSpeed, textSpeed + 1) + -60, Random.Range(-textSpeed, textSpeed + 1) + 90, 0);
-            gameOverTextPos[1].localPosition = new Vector3(Random.Range(-textSpeed, textSpeed + 1) + 65, Random.Range(-textSpeed, textSpeed + 1) + 90, 0);
+            gameOverTextPos[0].localPosition = new Vector3(Random.Range(-textSpeed, textSpeed + 1) + -120, Random.Range(-textSpeed, textSpeed + 1), 0);
+            gameOverTextPos[1].localPosition = new Vector3(Random.Range(-textSpeed, textSpeed + 1) + 120, Random.Range(-textSpeed, textSpeed + 1), 0);
             yield return null;
         }
 	}

@@ -36,6 +36,7 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
+        DataManager.Instance.isDead = true;
         ui.GameOver();
         backMusic.Stop();
         catStatue.SetAnimation(CatAnimation.Laugh);

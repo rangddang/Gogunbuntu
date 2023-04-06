@@ -58,6 +58,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Object\DeadZone.cs" />
     <Compile Include="Assets\Scripts\Manager\DataManager.cs" />
+    <Compile Include="Assets\Scripts\Object\WireController.cs" />
     <Compile Include="Assets\Scripts\Map\MapSetting.cs" />
     <Compile Include="Assets\Scripts\Manager\SoundManager.cs" />
     <Compile Include="Assets\Scripts\Object\Coin.cs" />
