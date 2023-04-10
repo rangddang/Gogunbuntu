@@ -46,6 +46,6 @@ public class GameManager : MonoBehaviour
     {
 		DataManager.Instance.isDead = false;
 		DataManager.Instance.Score = 0;
-		DataManager.Instance.Stage = 0;
+		DataManager.Instance.Stage = 1;
 	}
 }

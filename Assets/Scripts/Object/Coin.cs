@@ -22,7 +22,7 @@ public class Coin : MonoBehaviour
             else if(transform.tag == "Gold_Coin")
             {
                 DataManager.Instance.Score += 50 - (5 * DataManager.Instance.Stage);
-                transform.parent.transform.parent.transform.parent.GetComponent<MapSetting>().currentGoldCoins++;
+                transform.parent.parent.parent.GetComponent<MapSetting>().currentGoldCoins++;
             }
 
 			SoundManager.Instance.SFXPlay(transform.tag, clip);

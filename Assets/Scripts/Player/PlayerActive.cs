@@ -26,6 +26,34 @@ public class PlayerActive : MonoBehaviour
 
     public void JumpShot()
     {
-
+        wire.ShotWire();
     }
+
+    public void OnWire()
+    {
+        StartCoroutine("Wire");
+    }
+
+    private IEnumerator Wire()
+    {
+		rigid.useGravity = false;
+		rigid.isKinematic = true;
+        float transY = transform.position.y;
+        float veloY = 0;
+        float gra = 9.8f;
+        float graScale = 9;
+        float rev = 19f * wire.WireDistance * 0.12f;
+        veloY -= rev;
+        do
+        {
+            veloY += gra * graScale * Time.deltaTime;
+            transform.position += Vector3.up * veloY * Time.deltaTime;
+            yield return null;
+        }
+        while (transY > transform.position.y);
+		rigid.useGravity = true;
+		rigid.isKinematic = false;
+        Jump();
+		wire.DisableWire();
+	}
 }

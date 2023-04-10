@@ -67,7 +67,6 @@
     <Compile Include="Assets\Scripts\Player\PlayerActive.cs" />
     <Compile Include="Assets\Scripts\Object\MoveSkyBox.cs" />
     <Compile Include="Assets\Scripts\Manager\GameManager.cs" />
-    <Compile Include="Assets\Scripts\Object\MainLight.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerSprite.cs" />
     <Compile Include="Assets\Scripts\Manager\InputManager.cs" />
     <Compile Include="Assets\Scripts\UI\UIController.cs" />

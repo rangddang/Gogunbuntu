@@ -6,25 +6,27 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private GameManager gameManager;
     [SerializeField] private InputManager inputManager;
+    [SerializeField] private WireController wire;
 	[SerializeField] private LayerMask jumpableGround;
     
     private PlayerSprite playerSprite;
 	private PlayerActive playerActive;
     private Rigidbody rigid;
 
-    private Transform currentHandPos;
+    private Transform currentHand;
     private Vector3 jumpHandPos;
     private Vector3 wireHandPos;
 
     private bool isJump = false;
     private bool isDead;
+    private bool isWire;
 
     private void Awake()
     {
         playerSprite = transform.Find("PlayerSprite").GetComponent<PlayerSprite>();
         playerActive = GetComponent<PlayerActive>();
         rigid = GetComponent<Rigidbody>();
-        currentHandPos = transform.Find("CurrentHandPosition").transform;
+        currentHand = transform.Find("CurrentHandPosition").transform;
         jumpHandPos = transform.Find("JumpHandPosition").transform.localPosition;
         wireHandPos = transform.Find("WireHandPosition").transform.localPosition;
     }
@@ -47,16 +49,34 @@ public class PlayerController : MonoBehaviour
         {
             if (OnGrounded())
             {
-                currentHandPos.localPosition = jumpHandPos;
+                currentHand.localPosition = jumpHandPos;
                 StartCoroutine("Jumping");
                 playerActive.Jump();
                 playerSprite.SetAnimation(PlayerAnimation.Jump);
             }
             else
             {
+                playerActive.JumpShot();
 				playerSprite.SetAnimation(PlayerAnimation.JumpShot);
 			}
         }
+        if (wire.OnWire && !isWire)
+        {
+            currentHand.localPosition = wireHandPos;
+            isWire = true;
+            playerActive.OnWire();
+			playerSprite.SetAnimation(PlayerAnimation.Wire);
+		}
+        else if (wire.OnWire)
+        {
+            transform.up = (wire.transform.position - transform.position).normalized;
+        }
+        else if (!wire.OnWire && isWire)
+        {
+            transform.rotation = Quaternion.identity;
+            isWire = false;
+			playerSprite.SetAnimation(PlayerAnimation.Rolling);
+		}
         if(OnGrounded() && !isJump)
         {
 			playerSprite.SetAnimation(PlayerAnimation.Run);

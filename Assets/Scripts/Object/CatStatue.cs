@@ -16,22 +16,9 @@ public class CatStatue : MonoBehaviour
     [SerializeField] private Transform catHead;
     private Animator anim;
 
-    int yBool = 1;
-    public float yMax = 0.3f;
-    public float ySpeed = 10;
-    float yPos;
-    int xBool = 1;
-    public float xMax = 0.2f;
-    public float xSpeed = 4;
-
     private void Awake()
     {
         anim = catHead.GetComponent<Animator>();
-    }
-
-    private void Start()
-    {
-        yPos = transform.position.y;
     }
 
     public void SetAnimation(CatAnimation catAnim)

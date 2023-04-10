@@ -5,7 +5,6 @@ TagManager:
   serializedVersion: 2
   tags:
   - Coin
-  - Roof
   - Ground
   - Gold_Coin
   layers:
@@ -16,7 +15,7 @@ TagManager:
   - Water
   - UI
   - Ground
-  - 
+  - Building
   - 
   - 
   - 

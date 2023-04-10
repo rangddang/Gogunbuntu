@@ -5,7 +5,9 @@ using UnityEngine;
 
 public class MapMove : MonoBehaviour
 {
+	[SerializeField] private float currentMapSpeed;
 	[SerializeField] private float moveSpeed = 14;
+	[SerializeField] private float changeSpeed = 6f;
 
 	public float distance = 0;
 	public float currentDistance = 0;
@@ -16,8 +18,9 @@ public class MapMove : MonoBehaviour
 	{
 		if (DataManager.Instance.isDead)
 			return;
-		currentDistance += Time.deltaTime * moveSpeed;
-		transform.position += Vector3.left * Time.deltaTime * moveSpeed;
+		currentMapSpeed = moveSpeed + (DataManager.Instance.Stage * changeSpeed);
+		currentDistance += Time.deltaTime * currentMapSpeed;
+		transform.position += Vector3.left * Time.deltaTime * currentMapSpeed;
 	}
 
 }
