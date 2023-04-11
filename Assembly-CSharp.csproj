@@ -72,6 +72,9 @@
     <Compile Include="Assets\Scripts\UI\UIController.cs" />
     <Compile Include="Assets\Scripts\Map\MapMove.cs" />
     <Compile Include="Assets\Scripts\Map\MapMaker.cs" />
+    <Compile Include="Assets\Scripts\UI\VertexWobble.cs" />
+    <Compile Include="Assets\Scripts\UI\CharacterWobble.cs" />
+    <Compile Include="Assets\Scripts\UI\WordWobble.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

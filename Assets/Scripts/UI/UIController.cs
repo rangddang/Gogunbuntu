@@ -9,8 +9,10 @@ public class UIController : MonoBehaviour
     [SerializeField] private GameObject gameOverPanel;
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private TextMesh bestScoreText;
-	[SerializeField] private RectTransform[] gameOverTextPos;
+    [SerializeField] private CatStatue catStatue;
 	[SerializeField] private float textSpeed = 2;
+
+    private bool isBestScore;
 
 	private void Start()
     {
@@ -20,7 +22,14 @@ public class UIController : MonoBehaviour
     private void Update()
     {
 		if (DataManager.Instance.Score > DataManager.Instance.BestScore)
+        {
+            if (!isBestScore)
+            {
+                catStatue.SetAnimation(CatAnimation.Suprising);
+                isBestScore = true;
+            }
 			DataManager.Instance.BestScore = DataManager.Instance.Score;
+        }
         scoreText.text = DataManager.Instance.Score.ToString();
 		bestScoreText.text = DataManager.Instance.BestScore.ToString("0000000");
 	}
@@ -28,16 +37,15 @@ public class UIController : MonoBehaviour
     public void GameOver()
     {
 		gameOverPanel.SetActive(true);
-        StartCoroutine("MoveGameOverText");
 	}
 
-    private IEnumerator MoveGameOverText()
-    {
-        while (true)
-        {
-            gameOverTextPos[0].localPosition = new Vector3(Random.Range(-textSpeed, textSpeed + 1) + -120, Random.Range(-textSpeed, textSpeed + 1), 0);
-            gameOverTextPos[1].localPosition = new Vector3(Random.Range(-textSpeed, textSpeed + 1) + 120, Random.Range(-textSpeed, textSpeed + 1), 0);
-            yield return null;
-        }
-	}
+ //   private IEnumerator MoveGameOverText()
+ //   {
+ //       while (true)
+ //       {
+ //           gameOverTextPos[0].localPosition = new Vector3(Random.Range(-textSpeed, textSpeed + 1) + -120, Random.Range(-textSpeed, textSpeed + 1), 0);
+ //           gameOverTextPos[1].localPosition = new Vector3(Random.Range(-textSpeed, textSpeed + 1) + 120, Random.Range(-textSpeed, textSpeed + 1), 0);
+ //           yield return null;
+ //       }
+	//}
 }

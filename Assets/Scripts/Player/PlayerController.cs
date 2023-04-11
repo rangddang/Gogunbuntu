@@ -80,7 +80,7 @@ public class PlayerController : MonoBehaviour
         if(OnGrounded() && !isJump)
         {
 			playerSprite.SetAnimation(PlayerAnimation.Run);
-            if (DeadCast())
+            if (DeadCast() && !wire.OnWire)
             {
                 gameManager.GameOver();
             }

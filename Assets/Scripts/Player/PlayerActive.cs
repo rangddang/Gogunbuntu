@@ -34,15 +34,20 @@ public class PlayerActive : MonoBehaviour
         StartCoroutine("Wire");
     }
 
-    private IEnumerator Wire()
+	private void WireJump()
+	{
+		rigid.velocity = Vector3.up * jumpPower * 1.4f;
+	}
+
+	private IEnumerator Wire()
     {
 		rigid.useGravity = false;
 		rigid.isKinematic = true;
         float transY = transform.position.y;
         float veloY = 0;
         float gra = 9.8f;
-        float graScale = 9;
-        float rev = 19f * wire.WireDistance * 0.12f;
+        float graScale = 12;
+        float rev = 20f * wire.WireDistance * 0.13f;
         veloY -= rev;
         do
         {
@@ -53,7 +58,7 @@ public class PlayerActive : MonoBehaviour
         while (transY > transform.position.y);
 		rigid.useGravity = true;
 		rigid.isKinematic = false;
-        Jump();
+        WireJump();
 		wire.DisableWire();
 	}
 }

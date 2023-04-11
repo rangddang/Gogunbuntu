@@ -8,11 +8,17 @@ public class MapMove : MonoBehaviour
 	[SerializeField] private float currentMapSpeed;
 	[SerializeField] private float moveSpeed = 14;
 	[SerializeField] private float changeSpeed = 6f;
+	[SerializeField] private CatStatue catStatue;
 
 	public float distance = 0;
 	public float currentDistance = 0;
 
 	public float maxDistance = 0;
+
+	private void Start()
+	{
+		StartCoroutine("ChangeStage");
+	}
 
 	private void Update()
 	{
@@ -23,4 +29,24 @@ public class MapMove : MonoBehaviour
 		transform.position += Vector3.left * Time.deltaTime * currentMapSpeed;
 	}
 
+	public void StopStage()
+	{
+		StopCoroutine("ChangeStage");
+	}
+
+	private IEnumerator ChangeStage()
+	{
+		yield return new WaitForSeconds(17f);
+		UpdateStage();
+		yield return new WaitForSeconds(27f);
+		UpdateStage();
+		yield return new WaitForSeconds(35f);
+		Debug.Log("게임 클리어");
+	}
+
+	private void UpdateStage()
+	{
+		catStatue.SetAnimation(CatAnimation.Suprising);
+		DataManager.Instance.Stage++;
+	}
 }

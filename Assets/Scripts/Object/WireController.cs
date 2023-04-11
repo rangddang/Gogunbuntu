@@ -8,7 +8,6 @@ public class WireController : MonoBehaviour
     [SerializeField] private Vector3 shotPos;
     [SerializeField] private float shotSpeed = 10f;
     [SerializeField] private float maxDistance = 9f;
-    [SerializeField] private float localSize = 0.5f;
     [SerializeField] private LayerMask wireBuilding;
 
     private float wireDistance;
@@ -18,13 +17,13 @@ public class WireController : MonoBehaviour
     public bool OnWire => onWire;
 
     private LineRenderer line;
-    private SpriteRenderer sprite;
+    private Transform DRB;
     private RaycastHit hit;
     private bool isWire;
 
     private void Awake()
     {
-        sprite = GetComponent<SpriteRenderer>();
+        DRB = transform.GetChild(0);
         line = GetComponent<LineRenderer>();
     }
 
@@ -44,7 +43,7 @@ public class WireController : MonoBehaviour
         if(isWire)
             return;
         isWire = true;
-        sprite.enabled = true;
+        DRB.gameObject.SetActive(true);
         line.enabled = true;
         StartCoroutine("Shot");
     }
@@ -53,7 +52,7 @@ public class WireController : MonoBehaviour
     {
 		onWire = false;
 		isWire = false;
-		sprite.enabled = false;
+		DRB.gameObject.SetActive(false);
 		line.enabled = false;
         transform.parent = null;
 	}

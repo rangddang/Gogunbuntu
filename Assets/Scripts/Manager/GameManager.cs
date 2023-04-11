@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private UIController ui;
     [SerializeField] private AudioSource backMusic;
     [SerializeField] private CatStatue catStatue;
+    [SerializeField] private MapMove map;
 
     private void Start()
     {
@@ -37,7 +38,8 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         DataManager.Instance.isDead = true;
-        ui.GameOver();
+		map.StopStage();
+		ui.GameOver();
         backMusic.Stop();
         catStatue.SetAnimation(CatAnimation.Laugh);
     }
@@ -46,6 +48,6 @@ public class GameManager : MonoBehaviour
     {
 		DataManager.Instance.isDead = false;
 		DataManager.Instance.Score = 0;
-		DataManager.Instance.Stage = 1;
+		DataManager.Instance.Stage = 0;
 	}
 }
