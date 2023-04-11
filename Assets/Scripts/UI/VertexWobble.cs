@@ -5,8 +5,8 @@ using TMPro;
 
 public class VertexWobble : MonoBehaviour
 {
-	[SerializeField][Range(0f, 30f)] private float sinSize = 1.5f;
-	[SerializeField][Range(0f, 30f)] private float cosSize = 2.5f;
+	[SerializeField][Range(0f, 50f)] private float sinSize = 1.5f;
+	[SerializeField][Range(0f, 50f)] private float cosSize = 2.5f;
 
 	private TMP_Text textMesh;
     private Mesh mesh;
