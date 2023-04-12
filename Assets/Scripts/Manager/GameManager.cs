@@ -12,22 +12,19 @@ public class GameManager : MonoBehaviour
     [SerializeField] private AudioSource backMusic;
     [SerializeField] private CatStatue catStatue;
     [SerializeField] private MapMove map;
+    [SerializeField] private TextEffect textEffect;
+    [SerializeField] private RainbowWobble rainbowText;
 
-    private void Start()
-    {
-		StartSettings();
-    }
-
-    private void Update()
-    {
-		if (DataManager.Instance.isDead)
-        {
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                GameStart();
-            }
-        }
-    }
+  //  private void Update()
+  //  {
+		//if (DataManager.Instance.isDead)
+  //      {
+  //          if (Input.GetKeyDown(KeyCode.Space))
+  //          {
+  //              GameStart();
+  //          }
+  //      }
+  //  }
 
     public void GameStart()
     {
@@ -49,5 +46,26 @@ public class GameManager : MonoBehaviour
 		DataManager.Instance.isDead = false;
 		DataManager.Instance.Score = 0;
 		DataManager.Instance.Stage = 0;
+	}
+
+    public void Best()
+    {
+        rainbowText.enabled = true;
+        textEffect.Best();
+		catStatue.SetAnimation(CatAnimation.Suprising);
+	}
+
+    public void Bonus()
+    {
+        DataManager.Instance.Score += 200;
+        textEffect.Bonus();
+        catStatue.SetAnimation(CatAnimation.Blink1);
+    }
+
+    public void SpeedUp()
+    {
+        DataManager.Instance.Stage++;
+        textEffect.SpeedUp();
+		catStatue.SetAnimation(CatAnimation.Suprising);
 	}
 }

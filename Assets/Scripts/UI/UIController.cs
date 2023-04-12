@@ -5,12 +5,10 @@ using TMPro;
 
 public class UIController : MonoBehaviour
 {
+    [SerializeField] private GameManager gameManager;
     [SerializeField] private GameObject gameOverPanel;
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private TMP_Text bestScore;
-    [SerializeField] private RainbowWobble bestScoreText;
-    [SerializeField] private CatStatue catStatue;
-	[SerializeField] private float textSpeed = 2;
 
     private bool isBestScore;
 
@@ -25,9 +23,8 @@ public class UIController : MonoBehaviour
         {
             if (!isBestScore)
             {
-                bestScoreText.enabled = true;
-                catStatue.SetAnimation(CatAnimation.Suprising);
                 isBestScore = true;
+                gameManager.Best();
             }
 			DataManager.Instance.BestScore = DataManager.Instance.Score;
         }
@@ -41,14 +38,4 @@ public class UIController : MonoBehaviour
 		if (DataManager.Instance.Score > DataManager.Instance.BestScore)
 			DataManager.Instance.BestScore = DataManager.Instance.Score;
 	}
-
- //   private IEnumerator MoveGameOverText()
- //   {
- //       while (true)
- //       {
- //           gameOverTextPos[0].localPosition = new Vector3(Random.Range(-textSpeed, textSpeed + 1) + -120, Random.Range(-textSpeed, textSpeed + 1), 0);
- //           gameOverTextPos[1].localPosition = new Vector3(Random.Range(-textSpeed, textSpeed + 1) + 120, Random.Range(-textSpeed, textSpeed + 1), 0);
- //           yield return null;
- //       }
-	//}
 }

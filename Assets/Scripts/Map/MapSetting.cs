@@ -5,6 +5,7 @@ using UnityEngine;
 public class MapSetting : MonoBehaviour
 {
 	[SerializeField] private float distance = 20f;
+
 	public float Distance => distance;
 
 	public int currentGoldCoins = 0;
@@ -42,8 +43,6 @@ public class MapSetting : MonoBehaviour
 	private void Bonus()
 	{
 		isGoldMap = false;
-		DataManager.Instance.Score += 200;
-		Debug.Log("Bonus!");
-		FindObjectOfType<CatStatue>().SetAnimation(CatAnimation.Blink1);
+		FindObjectOfType<GameManager>().Bonus();
 	}
 }

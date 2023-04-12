@@ -5,10 +5,10 @@ using UnityEngine;
 
 public class MapMove : MonoBehaviour
 {
+	[SerializeField] private GameManager gameManager;
 	[SerializeField] private float currentMapSpeed;
 	[SerializeField] private float moveSpeed = 14;
 	[SerializeField] private float changeSpeed = 6f;
-	[SerializeField] private CatStatue catStatue;
 
 	public float distance = 0;
 	public float currentDistance = 0;
@@ -24,6 +24,7 @@ public class MapMove : MonoBehaviour
 	{
 		if (DataManager.Instance.isDead)
 			return;
+
 		currentMapSpeed = moveSpeed + (DataManager.Instance.Stage * changeSpeed);
 		currentDistance += Time.deltaTime * currentMapSpeed;
 		transform.position += Vector3.left * Time.deltaTime * currentMapSpeed;
@@ -46,7 +47,6 @@ public class MapMove : MonoBehaviour
 
 	private void UpdateStage()
 	{
-		catStatue.SetAnimation(CatAnimation.Suprising);
-		DataManager.Instance.Stage++;
+		gameManager.SpeedUp();
 	}
 }

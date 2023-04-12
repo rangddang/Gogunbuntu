@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameManager gameManager;
     [SerializeField] private InputManager inputManager;
     [SerializeField] private WireController wire;
+    [SerializeField] private CameraController camera;
 	[SerializeField] private LayerMask jumpableGround;
     
     private PlayerSprite playerSprite;
@@ -66,6 +67,7 @@ public class PlayerController : MonoBehaviour
             isWire = true;
             playerActive.OnWire();
 			playerSprite.SetAnimation(PlayerAnimation.Wire);
+            camera.ZoomInCamera();
 		}
         else if (wire.OnWire)
         {
@@ -80,7 +82,8 @@ public class PlayerController : MonoBehaviour
         if(OnGrounded() && !isJump)
         {
 			playerSprite.SetAnimation(PlayerAnimation.Run);
-            if (DeadCast() && !wire.OnWire)
+			camera.ZoomOutCamera();
+			if (DeadCast() && !wire.OnWire)
             {
                 gameManager.GameOver();
             }
@@ -101,6 +104,6 @@ public class PlayerController : MonoBehaviour
 
     private bool DeadCast()
     {
-        return !Physics.Raycast(transform.position, Vector3.down, 4f, jumpableGround);
+        return !Physics.Raycast(transform.position + new Vector3(-0.2f,0,0), Vector3.down, 4f, jumpableGround);
 	}
 }

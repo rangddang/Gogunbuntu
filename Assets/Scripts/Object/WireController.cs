@@ -70,7 +70,7 @@ public class WireController : MonoBehaviour
         {
 			wireDistance = Vector3.Distance(transform.position, targetPos + lastHandPos);
 			transform.position = Vector3.MoveTowards(transform.position, targetPos + lastHandPos, Time.deltaTime * shotSpeed);
-            //Debug.DrawRay(lastHandPos, targetPos - (targetPos.normalized * distance), Color.white, 0.2f);
+            Debug.DrawRay(lastHandPos, targetPos - (targetPos.normalized * (maxDistance - wireDistance)), Color.white, 0.2f);
             if (Physics.Raycast(lastHandPos, targetPos.normalized, out hit, (maxDistance - wireDistance), wireBuilding))
             {
                 Target();

@@ -11,16 +11,22 @@ public class PlayerActive : MonoBehaviour
     [SerializeField] private WireController wire;
 
     [SerializeField] private float jumpPower = 25f;
-
+    private float currentJumpPower;
 
 	private void Awake()
     {
         rigid = GetComponent<Rigidbody>();
     }
 
+    private void Start()
+    {
+        currentJumpPower = jumpPower;
+    }
+
     public void Jump()
     {
-        rigid.velocity = Vector3.up * jumpPower;
+        currentJumpPower = jumpPower + DataManager.Instance.Stage * 3;
+        rigid.velocity = Vector3.up * currentJumpPower;
         soundManager.SFXPlay("Jump", jumpSound);
     }
 
@@ -36,7 +42,7 @@ public class PlayerActive : MonoBehaviour
 
 	private void WireJump()
 	{
-		rigid.velocity = Vector3.up * jumpPower * 1.4f;
+		rigid.velocity = Vector3.up * jumpPower * 1.15f;
 	}
 
 	private IEnumerator Wire()
@@ -47,7 +53,7 @@ public class PlayerActive : MonoBehaviour
         float veloY = 0;
         float gra = 9.8f;
         float graScale = 12;
-        float rev = 20f * wire.WireDistance * 0.13f;
+        float rev = 20f * wire.WireDistance * 0.15f;
         veloY -= rev;
         do
         {
