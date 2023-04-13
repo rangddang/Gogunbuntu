@@ -25,7 +25,9 @@ public class PlayerActive : MonoBehaviour
 
     public void Jump()
     {
-        currentJumpPower = jumpPower + DataManager.Instance.Stage * 3;
+        // 2스테이지 갔을때 점프판정 막막한거 방지용
+        if(DataManager.Instance.Stage > 0)
+            currentJumpPower = jumpPower + 3;
         rigid.velocity = Vector3.up * currentJumpPower;
         soundManager.SFXPlay("Jump", jumpSound);
     }
@@ -42,7 +44,7 @@ public class PlayerActive : MonoBehaviour
 
 	private void WireJump()
 	{
-		rigid.velocity = Vector3.up * jumpPower * 1.15f;
+		rigid.velocity = Vector3.up * jumpPower * 1.2f;
 	}
 
 	private IEnumerator Wire()

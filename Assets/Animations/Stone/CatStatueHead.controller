@@ -80,7 +80,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: c3d97f8b20d471f4e8388978bef63ac8, type: 2}
+  m_Motion: {fileID: 7400000, guid: 4e97baa21332a0e478084e5d98b8213a, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -110,7 +110,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 906d2c53510074740a4acd81cab2cde3, type: 2}
+  m_Motion: {fileID: 7400000, guid: f3c61c53765d6154f9d60d35dd3392a1, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -216,7 +216,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Surprising
-  m_Speed: 1
+  m_Speed: 0.8
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 2422761096484765377}
@@ -229,7 +229,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 13a0a0fc97f08c640a73c466287ccef5, type: 2}
+  m_Motion: {fileID: 7400000, guid: 2065ef737f9e52d4aab795b0c6da09dd, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -306,7 +306,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 7ea1bacd9983c314bb0494199faa5904, type: 2}
+  m_Motion: {fileID: 7400000, guid: 6d4f8ec64141de344b6b80a47fc75d0b, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -345,7 +345,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Laugh
-  m_Speed: 1
+  m_Speed: 1.2
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 7599897947295952703}
@@ -358,7 +358,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 159a9f43c09866f4d9b8bc5e6aeb9605, type: 2}
+  m_Motion: {fileID: 7400000, guid: 7776be79c734d5c4a972226ab5e4af94, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 

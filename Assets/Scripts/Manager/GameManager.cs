@@ -29,13 +29,12 @@ public class GameManager : MonoBehaviour
     public void GameStart()
     {
         StartSettings();
-		SceneManager.LoadScene("Game");
+        LoadingManager.LoadScene("Game");
 	}
 
     public void GameOver()
     {
         DataManager.Instance.isDead = true;
-		map.StopStage();
 		ui.GameOver();
         backMusic.Stop();
         catStatue.SetAnimation(CatAnimation.Laugh);

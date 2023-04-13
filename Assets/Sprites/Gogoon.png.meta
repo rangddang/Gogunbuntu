@@ -1,57 +1,12 @@
 fileFormatVersion: 2
 guid: 67a2728af67592a498de198c3cadc26a
 TextureImporter:
-  internalIDToNameTable:
-  - first:
-      213: 5734507443917577304
-    second: Gogoon_0
-  - first:
-      213: 2857957483502257904
-    second: Gogoon_1
-  - first:
-      213: 4278048075145328119
-    second: Gogoon_2
-  - first:
-      213: -4143771930222565664
-    second: Gogoon_3
-  - first:
-      213: 3968917117428228365
-    second: Gogoon_4
-  - first:
-      213: -1866066854308525559
-    second: Gogoon_5
-  - first:
-      213: -8938935173983303939
-    second: Gogoon_6
-  - first:
-      213: 5204980038465875513
-    second: Gogoon_7
-  - first:
-      213: -5165102337189293838
-    second: Gogoon_8
-  - first:
-      213: 9023018277793756654
-    second: Gogoon_9
-  - first:
-      213: 7501402655102118939
-    second: Gogoon_10
-  - first:
-      213: -6522035558352284488
-    second: Gogoon_11
-  - first:
-      213: -1408608054347748441
-    second: Gogoon_12
-  - first:
-      213: -4694344064721759893
-    second: Gogoon_13
-  - first:
-      213: -9096903297826933715
-    second: Gogoon_14
+  internalIDToNameTable: []
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 0
+    enableMipMap: 1
     sRGBTexture: 1
     linearTexture: 0
     fadeOut: 0
@@ -81,8 +36,8 @@ TextureImporter:
     filterMode: 0
     aniso: 1
     mipBias: 0
-    wrapU: 1
-    wrapV: 1
+    wrapU: 0
+    wrapV: 0
     wrapW: 0
   nPOTScale: 0
   lightmap: 0
@@ -96,7 +51,7 @@ TextureImporter:
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
-  alphaIsTransparency: 1
+  alphaIsTransparency: 0
   spriteTessellationDetail: -1
   textureType: 8
   textureShape: 1
@@ -108,7 +63,7 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
-  cookieLightType: 1
+  cookieLightType: 0
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -127,7 +82,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -139,7 +94,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -151,7 +106,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -163,7 +118,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -188,8 +143,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 85c5a843320159f40800000000000000
-      internalID: 5734507443917577304
+      spriteID: 55640210f473cce43a91bc390a78a42a
+      internalID: -1977534911
       vertices: []
       indices: 
       edges: []
@@ -209,8 +164,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0f6425b603189a720800000000000000
-      internalID: 2857957483502257904
+      spriteID: dcf38258c2878374aa4539e49dd1d428
+      internalID: -322062730
       vertices: []
       indices: 
       edges: []
@@ -230,8 +185,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7f5b41bee0eae5b30800000000000000
-      internalID: 4278048075145328119
+      spriteID: 5f8eaa22dffec214a81ff3fb4ad580a1
+      internalID: 1926990010
       vertices: []
       indices: 
       edges: []
@@ -240,8 +195,8 @@ TextureImporter:
       name: Gogoon_3
       rect:
         serializedVersion: 2
-        x: 120
-        y: 120
+        x: 0
+        y: 80
         width: 40
         height: 40
       alignment: 0
@@ -251,8 +206,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0e669d4526d5e76c0800000000000000
-      internalID: -4143771930222565664
+      spriteID: acc766f18dca39f44a187f90c195f1c4
+      internalID: 1843235298
       vertices: []
       indices: 
       edges: []
@@ -261,7 +216,7 @@ TextureImporter:
       name: Gogoon_4
       rect:
         serializedVersion: 2
-        x: 0
+        x: 40
         y: 80
         width: 40
         height: 40
@@ -272,8 +227,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d01e64f071d641730800000000000000
-      internalID: 3968917117428228365
+      spriteID: 84c6e2de6cdf7124d8dfd6ee93e75eeb
+      internalID: -1664998170
       vertices: []
       indices: 
       edges: []
@@ -282,7 +237,7 @@ TextureImporter:
       name: Gogoon_5
       rect:
         serializedVersion: 2
-        x: 40
+        x: 80
         y: 80
         width: 40
         height: 40
@@ -293,8 +248,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 90a4fc535166a16e0800000000000000
-      internalID: -1866066854308525559
+      spriteID: 8cac1787f9a5bae46a976fc2f2a84e36
+      internalID: 1305669414
       vertices: []
       indices: 
       edges: []
@@ -303,8 +258,8 @@ TextureImporter:
       name: Gogoon_6
       rect:
         serializedVersion: 2
-        x: 80
-        y: 80
+        x: 0
+        y: 40
         width: 40
         height: 40
       alignment: 0
@@ -314,8 +269,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: df60b7cd1d582f380800000000000000
-      internalID: -8938935173983303939
+      spriteID: b8f2372514513b04aa6890b6a02c1939
+      internalID: -620827866
       vertices: []
       indices: 
       edges: []
@@ -324,8 +279,8 @@ TextureImporter:
       name: Gogoon_7
       rect:
         serializedVersion: 2
-        x: 120
-        y: 80
+        x: 40
+        y: 40
         width: 40
         height: 40
       alignment: 0
@@ -335,8 +290,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 93ee1cf84cdcb3840800000000000000
-      internalID: 5204980038465875513
+      spriteID: a939704be6c1c744eac920a1987ef7fb
+      internalID: 577707827
       vertices: []
       indices: 
       edges: []
@@ -345,7 +300,7 @@ TextureImporter:
       name: Gogoon_8
       rect:
         serializedVersion: 2
-        x: 0
+        x: 80
         y: 40
         width: 40
         height: 40
@@ -356,8 +311,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2f0da4b4aced158b0800000000000000
-      internalID: -5165102337189293838
+      spriteID: 58ef3095f2b8d614584fddfccca7d556
+      internalID: 727730363
       vertices: []
       indices: 
       edges: []
@@ -366,69 +321,6 @@ TextureImporter:
       name: Gogoon_9
       rect:
         serializedVersion: 2
-        x: 40
-        y: 40
-        width: 40
-        height: 40
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ee5f0c15153383d70800000000000000
-      internalID: 9023018277793756654
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Gogoon_10
-      rect:
-        serializedVersion: 2
-        x: 80
-        y: 40
-        width: 40
-        height: 40
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b1ca88e78f55a1860800000000000000
-      internalID: 7501402655102118939
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Gogoon_11
-      rect:
-        serializedVersion: 2
-        x: 120
-        y: 40
-        width: 40
-        height: 40
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8b412f307331d75a0800000000000000
-      internalID: -6522035558352284488
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Gogoon_12
-      rect:
-        serializedVersion: 2
         x: 0
         y: 0
         width: 40
@@ -440,50 +332,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7ab29dc007e937ce0800000000000000
-      internalID: -1408608054347748441
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Gogoon_13
-      rect:
-        serializedVersion: 2
-        x: 40
-        y: 0
-        width: 40
-        height: 40
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b61dbc0e1f65adeb0800000000000000
-      internalID: -4694344064721759893
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Gogoon_14
-      rect:
-        serializedVersion: 2
-        x: 80
-        y: 0
-        width: 40
-        height: 40
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d2432f8e5ae41c180800000000000000
-      internalID: -9096903297826933715
+      spriteID: e1364de258207ac459a691bd3c097813
+      internalID: 407092809
       vertices: []
       indices: 
       edges: []
@@ -491,7 +341,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 0aa4a98a637b74d4e8459e7486303738
+    spriteID: b347b57fabb077e44b8749b5e608a561
     internalID: 0
     vertices: []
     indices: 
@@ -499,21 +349,16 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Gogoon_0: 5734507443917577304
-      Gogoon_4: 3968917117428228365
-      Gogoon_10: 7501402655102118939
-      Gogoon_13: -4694344064721759893
-      Gogoon_3: -4143771930222565664
-      Gogoon_8: -5165102337189293838
-      Gogoon_6: -8938935173983303939
-      Gogoon_12: -1408608054347748441
-      Gogoon_5: -1866066854308525559
-      Gogoon_7: 5204980038465875513
-      Gogoon_2: 4278048075145328119
-      Gogoon_1: 2857957483502257904
-      Gogoon_14: -9096903297826933715
-      Gogoon_9: 9023018277793756654
-      Gogoon_11: -6522035558352284488
+      Gogoon_0: -1977534911
+      Gogoon_4: -1664998170
+      Gogoon_3: 1843235298
+      Gogoon_8: 727730363
+      Gogoon_6: -620827866
+      Gogoon_5: 1305669414
+      Gogoon_7: 577707827
+      Gogoon_2: 1926990010
+      Gogoon_1: -322062730
+      Gogoon_9: 407092809
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

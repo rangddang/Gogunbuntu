@@ -9,15 +9,21 @@ public class MapMove : MonoBehaviour
 	[SerializeField] private float currentMapSpeed;
 	[SerializeField] private float moveSpeed = 14;
 	[SerializeField] private float changeSpeed = 6f;
+	[SerializeField] private List<float> stageTime;
+
+	public int MaxStage => stageTime.Count;
 
 	public float distance = 0;
 	public float currentDistance = 0;
+	public float time = 0;
+	public float maxTime;
 
 	public float maxDistance = 0;
 
 	private void Start()
 	{
-		StartCoroutine("ChangeStage");
+		maxTime = stageTime[DataManager.Instance.Stage];
+		Debug.Log(MaxStage);
 	}
 
 	private void Update()
@@ -28,21 +34,14 @@ public class MapMove : MonoBehaviour
 		currentMapSpeed = moveSpeed + (DataManager.Instance.Stage * changeSpeed);
 		currentDistance += Time.deltaTime * currentMapSpeed;
 		transform.position += Vector3.left * Time.deltaTime * currentMapSpeed;
-	}
 
-	public void StopStage()
-	{
-		StopCoroutine("ChangeStage");
-	}
+		time += Time.deltaTime;
 
-	private IEnumerator ChangeStage()
-	{
-		yield return new WaitForSeconds(17f);
-		UpdateStage();
-		yield return new WaitForSeconds(27f);
-		UpdateStage();
-		yield return new WaitForSeconds(35f);
-		Debug.Log("게임 클리어");
+		if (time > maxTime && DataManager.Instance.Stage + 1 < MaxStage)
+		{
+			maxTime += stageTime[DataManager.Instance.Stage];
+			UpdateStage();
+		}
 	}
 
 	private void UpdateStage()
