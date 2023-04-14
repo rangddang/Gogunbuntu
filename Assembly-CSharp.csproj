@@ -58,29 +58,34 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Manager\DataManager.cs" />
     <Compile Include="Assets\Scripts\Object\WireController.cs" />
+    <Compile Include="Assets\Scripts\UI\Blinder.cs" />
     <Compile Include="Assets\Scripts\Object\Coin.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerController.cs" />
+    <Compile Include="Assets\Scripts\Sound\ButtonSound.cs" />
     <Compile Include="Assets\Scripts\Object\CameraController.cs" />
     <Compile Include="Assets\Scripts\UI\VertexWobble.cs" />
     <Compile Include="Assets\Scripts\Map\GroundPerfect.cs" />
     <Compile Include="Assets\Scripts\Object\MoveSkyBox.cs" />
+    <Compile Include="Assets\Scripts\Manager\SettingManager.cs" />
     <Compile Include="Assets\Scripts\Manager\InputManager.cs" />
     <Compile Include="Assets\Scripts\UI\WordWobble.cs" />
     <Compile Include="Assets\Scripts\Map\MapMaker.cs" />
+    <Compile Include="Assets\Scripts\Sound\BackMusic.cs" />
     <Compile Include="Assets\Scripts\Object\DeadZone.cs" />
     <Compile Include="Assets\Scripts\UI\RainbowWobble.cs" />
     <Compile Include="Assets\Scripts\Map\MapSetting.cs" />
     <Compile Include="Assets\Scripts\Manager\SoundManager.cs" />
+    <Compile Include="Assets\Scripts\Sound\SoundGrop.cs" />
     <Compile Include="Assets\Scripts\UI\CharacterWobble.cs" />
     <Compile Include="Assets\Scripts\Object\CatStatue.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerActive.cs" />
     <Compile Include="Assets\Scripts\Manager\LoadingManager.cs" />
+    <Compile Include="Assets\Scripts\UI\StageBar.cs" />
     <Compile Include="Assets\Scripts\UI\TextEffect.cs" />
     <Compile Include="Assets\Scripts\Manager\GameManager.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerSprite.cs" />
     <Compile Include="Assets\Scripts\UI\UIController.cs" />
     <Compile Include="Assets\Scripts\Map\MapMove.cs" />
-    <Compile Include="Assets\Scripts\UI\StageBar.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

@@ -23,7 +23,6 @@ public class MapMove : MonoBehaviour
 	private void Start()
 	{
 		maxTime = stageTime[DataManager.Instance.Stage];
-		Debug.Log(MaxStage);
 	}
 
 	private void Update()

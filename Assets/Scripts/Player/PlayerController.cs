@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private WireController wire;
     [SerializeField] private CameraController camera;
 	[SerializeField] private LayerMask jumpableGround;
+    [SerializeField] private AudioClip startSound;
     
     private PlayerSprite playerSprite;
 	private PlayerActive playerActive;
@@ -30,6 +31,11 @@ public class PlayerController : MonoBehaviour
         currentHand = transform.Find("CurrentHandPosition").transform;
         jumpHandPos = transform.Find("JumpHandPosition").transform.localPosition;
         wireHandPos = transform.Find("WireHandPosition").transform.localPosition;
+    }
+
+    private void Start()
+    {
+        SoundManager.Instance.SFXPlay("Start", startSound);
     }
 
     private void Update()

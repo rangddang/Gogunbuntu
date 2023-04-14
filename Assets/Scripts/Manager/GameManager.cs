@@ -14,27 +14,36 @@ public class GameManager : MonoBehaviour
     [SerializeField] private MapMove map;
     [SerializeField] private TextEffect textEffect;
     [SerializeField] private RainbowWobble rainbowText;
+    [SerializeField] private Blinder blinder;
+    [SerializeField] private AudioClip gameOverSound;
 
-  //  private void Update()
-  //  {
-		//if (DataManager.Instance.isDead)
-  //      {
-  //          if (Input.GetKeyDown(KeyCode.Space))
-  //          {
-  //              GameStart();
-  //          }
-  //      }
-  //  }
+    private string sceneName;
 
-    public void GameStart()
+    public void GoToMain()
     {
-        StartSettings();
-        LoadingManager.LoadScene("Game");
+		blinder.Blind();
+		if (sceneName == null)
+			sceneName = "Main";
+		StartCoroutine("Ready");
+	}
+
+    public void Exit()
+    {
+        Application.Quit();
+    }
+
+	public void GameStart()
+    {
+		blinder.Blind();
+        if(sceneName == null)
+            sceneName = "Game";
+        StartCoroutine("Ready");
 	}
 
     public void GameOver()
     {
         DataManager.Instance.isDead = true;
+        SoundManager.Instance.SFXPlay("GameOver", gameOverSound);
 		ui.GameOver();
         backMusic.Stop();
         catStatue.SetAnimation(CatAnimation.Laugh);
@@ -66,5 +75,19 @@ public class GameManager : MonoBehaviour
         DataManager.Instance.Stage++;
         textEffect.SpeedUp();
 		catStatue.SetAnimation(CatAnimation.Suprising);
+	}
+
+    private IEnumerator Ready()
+    {
+        while (true)
+        {
+            yield return null;
+			if (blinder.EndBlind)
+			{
+				StartSettings();
+				LoadingManager.LoadScene(sceneName);
+                yield break;
+			}
+		}
 	}
 }

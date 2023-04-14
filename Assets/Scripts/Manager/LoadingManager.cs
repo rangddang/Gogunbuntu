@@ -6,8 +6,6 @@ using UnityEngine.UI;
 
 public class LoadingManager : MonoBehaviour
 {
-    [SerializeField] private Image loadingBar;
-
     static private string nextScene;
 
     private void Start()
@@ -26,24 +24,13 @@ public class LoadingManager : MonoBehaviour
         AsyncOperation op = SceneManager.LoadSceneAsync(nextScene);
         op.allowSceneActivation = false;
 
-        float timer = 0f;
         while (!op.isDone)
         {
             yield return null;
-
-            if(op.progress < 0.9f)
+            if (op.progress >= 0.9f)
             {
-                loadingBar.fillAmount = op.progress;
-            }
-            else
-            {
-                timer += Time.unscaledDeltaTime;
-                loadingBar.fillAmount = Mathf.Lerp(0.9f, 1f, timer);
-                if(loadingBar.fillAmount >= 1f)
-                {
-                    op.allowSceneActivation = true;
-                    yield break;
-                }
+                op.allowSceneActivation = true;
+                yield break;
             }
         }
     }
