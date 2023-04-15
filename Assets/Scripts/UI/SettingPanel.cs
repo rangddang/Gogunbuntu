@@ -11,6 +11,12 @@ public class SettingPanel : MonoBehaviour
         panelAnim = transform.GetChild(0).GetComponent<Animator>();
     }
 
+    private void Start()
+    {
+        CloseAnim();
+		gameObject.SetActive(false);
+    }
+
     public void OpenAnim()
     {
         panelAnim.SetBool("IsOpen", true);

@@ -36,6 +36,14 @@ public class SettingManager : MonoBehaviour
 		PlayerPrefs.SetFloat("SFXScale", play);
 	}
 
+	private void SetComponent(Transform trans, bool b)
+	{
+		for(int i=0;i< trans.childCount; i++)
+		{
+			trans.GetChild(i).gameObject.SetActive(b);
+		}
+	}
+
 	private IEnumerator ShowSetting()
 	{
 		RectTransform panelTransform = settingPanel.transform.GetChild(0).GetComponent<RectTransform>();
@@ -43,10 +51,9 @@ public class SettingManager : MonoBehaviour
 
 		float yPos = -1000;
 		float panelSpeed = 10f;
-		panelTransform.transform.GetChild(0).gameObject.SetActive(false);
-		panelTransform.transform.GetChild(1).gameObject.SetActive(false);
+		SetComponent(panelTransform.transform, false);
 		panelTransform.position = new Vector3(0, yPos, 0);
-
+		
 		while (true)
 		{
 			yield return null;
@@ -59,8 +66,7 @@ public class SettingManager : MonoBehaviour
 			{
 				panel.OpenAnim();
 				yield return new WaitForSeconds(1f);
-				panelTransform.transform.GetChild(0).gameObject.SetActive(true);
-				panelTransform.transform.GetChild(1).gameObject.SetActive(true);
+				SetComponent(panelTransform.transform, true);
 
 				yield break;
 			}
@@ -76,8 +82,7 @@ public class SettingManager : MonoBehaviour
 		float panelSpeed = 10f;
 
 		panelTransform.localPosition = new Vector3(0, yPos, 0);
-		panelTransform.transform.GetChild(0).gameObject.SetActive(false);
-		panelTransform.transform.GetChild(1).gameObject.SetActive(false);
+		SetComponent(panelTransform.transform, false);
 		panel.CloseAnim();
 		yield return new WaitForSeconds(1f);
 		while (true)
