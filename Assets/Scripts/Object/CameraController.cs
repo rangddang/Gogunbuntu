@@ -10,7 +10,11 @@ public class CameraController : MonoBehaviour
     [SerializeField] private float zoomSize = 70f;
     [SerializeField] private float zoomZ = -9;
     [SerializeField] private float zoomSpeed = 5f;
+    [SerializeField] private float changeSize = 2f;
     [SerializeField] private Vector3 offset;
+
+    private float saveNomalSize;
+    private float saveZoomSIze;
 
     private Camera camera;
     private float fieldOfView;
@@ -22,16 +26,18 @@ public class CameraController : MonoBehaviour
         camera = GetComponent<Camera>();
     }
 
+    private void Update()
+    {
+        UpdateCameraZoom();
+    }
+
     private void Start()
     {
         fieldOfView = nomalSize;
         transZ = nomalZ;
+        saveNomalSize = nomalSize;
+        saveZoomSIze = zoomSize;
     }
-
-    private void FixedUpdate()
-    {
-		//transform.position = new Vector3(transform.position.x, player.position.y * 0.5f + 3.5f, transform.position.z);
-	}
 
     public void ZoomInCamera()
     {
@@ -49,6 +55,12 @@ public class CameraController : MonoBehaviour
 		    StartCoroutine("ZoomOut");
         }
 	}
+
+    private void UpdateCameraZoom()
+    {
+        nomalSize = saveNomalSize + (DataManager.Instance.Stage * changeSize);
+        zoomSize = saveZoomSIze + (DataManager.Instance.Stage * changeSize);
+    }
 
     private IEnumerator ZoomIn()
     {
@@ -77,17 +89,4 @@ public class CameraController : MonoBehaviour
 		}
 	}
 
-    //public void Jump()
-    //{
-    //    StartCoroutine("JumpCameraMove");
-    //}
-
-    //private IEnumerator JumpCameraMove()
-    //{
-    //    while (true)
-    //    {
-    //        transform.position = new Vector3(transform.position.x, player.position.y * 0.5f + 3.5f, transform.position.z);
-    //        yield return null;
-    //    }
-    //}
 }

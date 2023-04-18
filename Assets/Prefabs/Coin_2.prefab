@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clip: {fileID: 8300000, guid: 4b4c0af0ec597184d97f2f05d24516b1, type: 3}
-  isGold: 0
+  coinEffect: {fileID: 5097269747636107900, guid: 4c8a0ed555980104588480dcbf03dad8, type: 3}
 --- !u!135 &5171623617488487977
 SphereCollider:
   m_ObjectHideFlags: 0

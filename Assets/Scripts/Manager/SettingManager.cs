@@ -65,7 +65,7 @@ public class SettingManager : MonoBehaviour
 			else
 			{
 				panel.OpenAnim();
-				yield return new WaitForSeconds(1f);
+				yield return new WaitForSeconds(0.3f);
 				SetComponent(panelTransform.transform, true);
 
 				yield break;
@@ -84,7 +84,7 @@ public class SettingManager : MonoBehaviour
 		panelTransform.localPosition = new Vector3(0, yPos, 0);
 		SetComponent(panelTransform.transform, false);
 		panel.CloseAnim();
-		yield return new WaitForSeconds(1f);
+		yield return new WaitForSeconds(0.3f);
 		while (true)
 		{
 			yield return null;

@@ -99,6 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clip: {fileID: 8300000, guid: 5de8adc961a5975429db23da9d576c3b, type: 3}
+  coinEffect: {fileID: 5097269747636107900, guid: e884dd1e2e51fa24aaf5f14049a9895d, type: 3}
 --- !u!135 &3312056611715134561
 SphereCollider:
   m_ObjectHideFlags: 0

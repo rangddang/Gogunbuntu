@@ -4,12 +4,20 @@ using UnityEngine;
 
 public class Coin : MonoBehaviour
 {
-    public AudioClip clip;
+    [SerializeField] private AudioClip clip;
+    [SerializeField] private GameObject coinEffect;
 
     private void Start()
     {
         transform.localPosition += Vector3.forward * -0.1f;
     }
+
+    private void MakeEffect()
+    {
+        GameObject effect = Instantiate(coinEffect, transform.position, Quaternion.identity);
+        effect.transform.parent = transform.parent.parent.parent;
+        effect.GetComponent<ParticleSystem>().Play();
+	}
 
     private void OnTriggerEnter(Collider other)
     {
@@ -26,7 +34,7 @@ public class Coin : MonoBehaviour
             }
 
 			SoundManager.Instance.SFXPlay(transform.tag, clip);
-
+            MakeEffect();
 			gameObject.SetActive(false);
         }
     }
