@@ -66,6 +66,7 @@
     <Compile Include="Assets\Scripts\UI\VertexWobble.cs" />
     <Compile Include="Assets\Scripts\Map\GroundPerfect.cs" />
     <Compile Include="Assets\Scripts\Object\MoveSkyBox.cs" />
+    <Compile Include="Assets\Scripts\UI\Fps.cs" />
     <Compile Include="Assets\Scripts\Manager\SettingManager.cs" />
     <Compile Include="Assets\Scripts\Manager\InputManager.cs" />
     <Compile Include="Assets\Scripts\UI\WordWobble.cs" />

@@ -29,7 +29,7 @@ public class MapSetting : MonoBehaviour
 
 	private void Update()
 	{
-		if (transform.position.x < -(distance + 10))
+		if (transform.position.x < -(distance + 30))
 		{
 			Destroy(gameObject);
 		}

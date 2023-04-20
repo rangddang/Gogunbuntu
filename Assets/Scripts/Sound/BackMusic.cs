@@ -17,7 +17,13 @@ public class BackMusic : MonoBehaviour
         backMusic.Play();
     }
 
-    public void SetSound()
+    private void Update()
+    {
+        SetSound();
+
+	}
+
+    private void SetSound()
     {
         backMusic.volume = PlayerPrefs.GetFloat("BGMScale");
     }

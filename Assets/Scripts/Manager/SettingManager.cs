@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class SettingManager : MonoBehaviour
 {
 	[SerializeField] private GameObject settingPanel;
 	[SerializeField] private Slider BGMSilder;
 	[SerializeField] private Slider SFXSlider;
+	[SerializeField] private AudioClip settingPanelSound;
 
 	public void OnSetting()
 	{
@@ -64,6 +66,7 @@ public class SettingManager : MonoBehaviour
 			}
 			else
 			{
+				SoundManager.Instance.SFXPlay("Paper", settingPanelSound);
 				panel.OpenAnim();
 				yield return new WaitForSeconds(0.3f);
 				SetComponent(panelTransform.transform, true);
@@ -81,6 +84,7 @@ public class SettingManager : MonoBehaviour
 		float yPos = 0;
 		float panelSpeed = 10f;
 
+		SoundManager.Instance.SFXPlay("Paper", settingPanelSound);
 		panelTransform.localPosition = new Vector3(0, yPos, 0);
 		SetComponent(panelTransform.transform, false);
 		panel.CloseAnim();

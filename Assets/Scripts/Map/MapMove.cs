@@ -22,6 +22,7 @@ public class MapMove : MonoBehaviour
 
 	private void Start()
 	{
+		//if(stageTime.Count - 1 <= DataManager.Instance.Stage)
 		maxTime = stageTime[DataManager.Instance.Stage];
 	}
 
@@ -38,8 +39,13 @@ public class MapMove : MonoBehaviour
 
 		if (time > maxTime && DataManager.Instance.Stage + 1 < MaxStage)
 		{
-			maxTime += stageTime[DataManager.Instance.Stage];
 			UpdateStage();
+			time -= maxTime;
+			maxTime = stageTime[DataManager.Instance.Stage];
+		}
+		else if(time > maxTime && DataManager.Instance.Stage + 1 >= MaxStage)
+		{
+			gameManager.Ending();
 		}
 	}
 

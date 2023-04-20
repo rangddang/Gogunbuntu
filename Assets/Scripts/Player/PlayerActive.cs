@@ -5,10 +5,9 @@ using UnityEngine;
 public class PlayerActive : MonoBehaviour
 {
     private Rigidbody rigid;
-
-    [SerializeField] private SoundManager soundManager;
     [SerializeField] private AudioClip jumpSound;
-    [SerializeField] private WireController wire;
+	[SerializeField] private AudioClip wireSound;
+	[SerializeField] private WireController wire;
 
     [SerializeField] private float jumpPower = 25f;
     private float currentJumpPower;
@@ -25,27 +24,34 @@ public class PlayerActive : MonoBehaviour
 
     public void Jump()
     {
-        // 2스테이지 갔을때 점프판정 막막한거 방지용
-        if(DataManager.Instance.Stage > 0)
-            currentJumpPower = jumpPower + 3;
         rigid.velocity = Vector3.up * currentJumpPower;
-        soundManager.SFXPlay("Jump", jumpSound);
+        SoundManager.Instance.SFXPlay("Jump", jumpSound);
     }
 
     public void JumpShot()
     {
         wire.ShotWire();
-    }
+	}
 
     public void OnWire()
     {
+		SoundManager.Instance.SFXPlay("Wire", wireSound);
         StartCoroutine("Wire");
-    }
-
-	private void WireJump()
-	{
-		rigid.velocity = Vector3.up * jumpPower * 1.2f;
 	}
+
+    private void WireJump()
+    {
+        if(DataManager.Instance.Stage < 2)
+        {
+			rigid.useGravity = true;
+			rigid.isKinematic = false;
+			rigid.velocity = Vector3.up * jumpPower * 1.3f;
+		}
+        else
+        {
+            StartCoroutine("WireJumping");
+        }
+    }
 
 	private IEnumerator Wire()
     {
@@ -54,8 +60,8 @@ public class PlayerActive : MonoBehaviour
         float transY = transform.position.y;
         float veloY = 0;
         float gra = 9.8f;
-        float graScale = 12;
-        float rev = 20f * wire.WireDistance * 0.15f;
+        float graScale = 14;
+        float rev = 15f + wire.WireDistance * 1.2f;
         veloY -= rev;
         do
         {
@@ -64,9 +70,19 @@ public class PlayerActive : MonoBehaviour
             yield return null;
         }
         while (transY > transform.position.y);
-		rigid.useGravity = true;
-		rigid.isKinematic = false;
         WireJump();
 		wire.DisableWire();
+	}
+
+    private IEnumerator WireJumping()
+    {
+        while(transform.position.y < 7.5f)
+        {
+            transform.position += Vector3.up * jumpPower * Time.deltaTime;
+            yield return null;
+        }
+		rigid.useGravity = true;
+		rigid.isKinematic = false;
+        rigid.velocity = Vector3.up * 6f;
 	}
 }

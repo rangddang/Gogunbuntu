@@ -16,7 +16,12 @@ public class ButtonSound : MonoBehaviour
 		SetSound();
 	}
 
-	public void SetSound()
+	private void Update()
+	{
+		SetSound();
+	}
+
+	private void SetSound()
 	{
 		buttonSound.volume = PlayerPrefs.GetFloat("SFXScale");
 	}

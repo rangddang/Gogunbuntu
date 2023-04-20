@@ -1,30 +1,53 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class InputManager : MonoBehaviour
 {
-    public List<KeyCode> jumpKeys = new List<KeyCode>();
-    private bool inputJumpKey;
-    public bool InputJumpKey => inputJumpKey;
+	public static InputManager Instance;
 
-
-    private void Update()
-    {
-		GetJumpKey();
+	private void Awake()
+	{
+		if (Instance == null)
+		{
+			Instance = this;
+			DontDestroyOnLoad(Instance);
+		}
+		else
+		{
+			Destroy(gameObject);
+		}
 	}
 
-    private void GetJumpKey()
+	public KeyCode[] jumpKeys;
+	//private int idx = -1;
+
+    public bool GetJumpKey()
     {
 		int jumpKeyCount = 0;
-		for (int i = 0; i < jumpKeys.Count; i++)
+		for (int i = 0; i < jumpKeys.Length; i++)
 		{
 			if (Input.GetKeyDown(jumpKeys[i]))
 			{
 				jumpKeyCount++;
-				inputJumpKey = true;
 			}
 		}
-		inputJumpKey = jumpKeyCount > 0 ? true : false;
+		return jumpKeyCount > 0 ? true : false;
 	}
+
+	//private void OnGUI()
+	//{
+	//	Event keyEvent = Event.current;
+	//	if (keyEvent.isKey && idx != -1)
+	//	{
+	//		jumpKeys[idx] = keyEvent.keyCode;
+	//		idx = -1;
+	//	}
+	//}
+
+	//public void ChangeButton(int index)
+	//{
+	//	idx = index;
+	//}
 }

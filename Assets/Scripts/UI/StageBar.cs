@@ -16,6 +16,6 @@ public class StageBar : MonoBehaviour
     private void Update()
     {
         if (DataManager.Instance.isDead) return;
-        slider.value = (map.time / map.maxTime) * ((1f / map.MaxStage) * (DataManager.Instance.Stage + 1));
+        slider.value = (map.time / map.maxTime) * (1f / map.MaxStage) + (1f / map.MaxStage) * DataManager.Instance.Stage;
     }
 }

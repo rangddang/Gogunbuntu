@@ -30,5 +30,6 @@ public class DataManager : MonoBehaviour
     public int BestScore = 0;
     public int Stage = 0;
     public bool isDead = false;
+    public bool isEnd = false;
 
 }

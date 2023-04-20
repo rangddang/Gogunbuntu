@@ -5,7 +5,6 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private GameManager gameManager;
-    [SerializeField] private InputManager inputManager;
     [SerializeField] private WireController wire;
     [SerializeField] private CameraController camera;
 	[SerializeField] private LayerMask jumpableGround;
@@ -52,7 +51,7 @@ public class PlayerController : MonoBehaviour
 			return;
 		}
 
-		if (inputManager.InputJumpKey)
+		if (InputManager.Instance.GetJumpKey())
         {
             if (OnGrounded())
             {

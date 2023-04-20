@@ -8,7 +8,8 @@ public class WireController : MonoBehaviour
     [SerializeField] private Vector3 shotPos;
     [SerializeField] private float shotSpeed = 10f;
     [SerializeField] private float maxDistance = 9f;
-    [SerializeField] private LayerMask wireBuilding;
+	[SerializeField] private AudioClip shotSound;
+	[SerializeField] private LayerMask wireBuilding;
 
     private float wireDistance;
     public float WireDistance => wireDistance;
@@ -40,8 +41,8 @@ public class WireController : MonoBehaviour
 
     public void ShotWire()
     {
-        if(isWire)
-            return;
+        if(isWire)  return;
+        SoundManager.Instance.SFXPlay("ShotWire", shotSound);
         isWire = true;
         DRB.gameObject.SetActive(true);
         line.enabled = true;

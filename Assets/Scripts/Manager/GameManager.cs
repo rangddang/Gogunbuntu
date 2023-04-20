@@ -16,8 +16,12 @@ public class GameManager : MonoBehaviour
     [SerializeField] private RainbowWobble rainbowText;
     [SerializeField] private Blinder blinder;
     [SerializeField] private AudioClip gameOverSound;
+    [SerializeField] private AudioClip bestSound;
+	[SerializeField] private AudioClip bonusSound;
+	[SerializeField] private AudioClip speedUpSound;
 
-    private string sceneName;
+
+	private string sceneName;
 
     public void GoToMain()
     {
@@ -43,9 +47,9 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         DataManager.Instance.isDead = true;
-        SoundManager.Instance.SFXPlay("GameOver", gameOverSound);
 		ui.GameOver();
         backMusic.Stop();
+        backMusic.PlayOneShot(gameOverSound);
         catStatue.SetAnimation(CatAnimation.Laugh);
     }
 
@@ -61,6 +65,7 @@ public class GameManager : MonoBehaviour
         rainbowText.enabled = true;
         textEffect.Best();
 		catStatue.SetAnimation(CatAnimation.Suprising);
+        SoundManager.Instance.SFXPlay("Best", bestSound);
 	}
 
     public void Bonus()
@@ -68,14 +73,21 @@ public class GameManager : MonoBehaviour
         DataManager.Instance.Score += 200;
         textEffect.Bonus();
         catStatue.SetAnimation(CatAnimation.Blink1);
-    }
+		SoundManager.Instance.SFXPlay("Bonus", bonusSound);
+	}
 
     public void SpeedUp()
     {
         DataManager.Instance.Stage++;
         textEffect.SpeedUp();
 		catStatue.SetAnimation(CatAnimation.Suprising);
+		SoundManager.Instance.SFXPlay("SpeedUp", speedUpSound);
 	}
+
+    public void Ending()
+    {
+        DataManager.Instance.isEnd = true;
+    }
 
     private IEnumerator Ready()
     {
