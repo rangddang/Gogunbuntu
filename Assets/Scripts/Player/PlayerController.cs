@@ -110,5 +110,6 @@ public class PlayerController : MonoBehaviour
     private bool DeadCast()
     {
         return !Physics.Raycast(transform.position + new Vector3(-0.25f,0,0), Vector3.down, 4f, jumpableGround);
+		//return !Physics.BoxCast(transform.position + new Vector3(-0.25f,0,0), new Vector3(1f, 8f, 1f) * 0.5f, Vector3.down, Quaternion.identity, 3f, jumpableGround);
 	}
 }

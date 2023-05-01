@@ -7,7 +7,6 @@ public class UIController : MonoBehaviour
 {
     [SerializeField] private GameManager gameManager;
     [SerializeField] private GameObject gameOverPanel;
-    [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private TMP_Text bestScore;
 
     private bool isBestScore;
@@ -28,7 +27,6 @@ public class UIController : MonoBehaviour
             }
 			DataManager.Instance.BestScore = DataManager.Instance.Score;
         }
-        scoreText.text = DataManager.Instance.Score.ToString();
 		bestScore.text = DataManager.Instance.BestScore.ToString("0000000");
 	}
 
@@ -36,6 +34,9 @@ public class UIController : MonoBehaviour
     {
 		gameOverPanel.SetActive(true);
 		if (DataManager.Instance.Score > DataManager.Instance.BestScore)
+        {
 			DataManager.Instance.BestScore = DataManager.Instance.Score;
+            PlayerPrefs.SetInt("BestScore", DataManager.Instance.BestScore);
+        }
 	}
 }

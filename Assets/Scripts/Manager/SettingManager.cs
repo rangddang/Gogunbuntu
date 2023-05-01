@@ -11,6 +11,24 @@ public class SettingManager : MonoBehaviour
 	[SerializeField] private Slider SFXSlider;
 	[SerializeField] private AudioClip settingPanelSound;
 
+	[RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
+	static void FirstLoad()
+	{
+
+		if (PlayerPrefs.HasKey("BestScore"))
+		{
+			DataManager.Instance.BestScore = PlayerPrefs.GetInt("BestScore");
+		}
+		if (!PlayerPrefs.HasKey("BGMScale"))
+		{
+			PlayerPrefs.SetFloat("BGMScale", 1f);
+		}
+		if (!PlayerPrefs.HasKey("SFXScale"))
+		{
+			PlayerPrefs.SetFloat("SFXScale", 1f);
+		}
+	}
+
 	public void OnSetting()
 	{
 		BGMSilder.value = PlayerPrefs.GetFloat("BGMScale");

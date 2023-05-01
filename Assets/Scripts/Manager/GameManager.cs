@@ -20,11 +20,11 @@ public class GameManager : MonoBehaviour
 	[SerializeField] private AudioClip bonusSound;
 	[SerializeField] private AudioClip speedUpSound;
 
-
 	private string sceneName;
 
-    public void GoToMain()
+	public void GoToMain()
     {
+		DataManager.Instance.isEnd = false;
 		blinder.Blind();
 		if (sceneName == null)
 			sceneName = "Main";
@@ -42,6 +42,7 @@ public class GameManager : MonoBehaviour
         if(sceneName == null)
             sceneName = "Game";
         StartCoroutine("Ready");
+		StartSettings();
 	}
 
     public void GameOver()
@@ -55,7 +56,6 @@ public class GameManager : MonoBehaviour
 
     private void StartSettings()
     {
-		DataManager.Instance.isDead = false;
 		DataManager.Instance.Score = 0;
 		DataManager.Instance.Stage = 0;
 	}
@@ -86,8 +86,12 @@ public class GameManager : MonoBehaviour
 
     public void Ending()
     {
-        DataManager.Instance.isEnd = true;
-    }
+        if (!DataManager.Instance.isEnd)
+        {
+            DataManager.Instance.isEnd = true;
+            StartCoroutine("End");
+        }
+	}
 
     private IEnumerator Ready()
     {
@@ -96,10 +100,19 @@ public class GameManager : MonoBehaviour
             yield return null;
 			if (blinder.EndBlind)
 			{
-				StartSettings();
+				DataManager.Instance.isDead = false;
 				LoadingManager.LoadScene(sceneName);
                 yield break;
 			}
 		}
+	}
+
+    private IEnumerator End()
+    {
+        yield return new WaitForSeconds(4.5f);
+		blinder.Blind();
+		if (sceneName == null)
+			sceneName = "Ending";
+		StartCoroutine("Ready");
 	}
 }

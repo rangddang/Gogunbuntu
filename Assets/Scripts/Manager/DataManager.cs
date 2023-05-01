@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class DataManager : MonoBehaviour
 {
-    static DataManager instance;
+	static DataManager instance;
 
     public static DataManager Instance
     {
@@ -24,7 +25,7 @@ public class DataManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-    }
+	}
 
     public int Score = 0;
     public int BestScore = 0;
