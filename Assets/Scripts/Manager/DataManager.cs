@@ -35,7 +35,10 @@ public class DataManager : MonoBehaviour
 	[RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
 	static void FirstLoad()
 	{
-        if (!PlayerPrefs.HasKey("BestScore"))
+		Application.targetFrameRate = 70;
+		QualitySettings.vSyncCount = 0;
+
+		if (!PlayerPrefs.HasKey("BestScore"))
         {
             PlayerPrefs.SetInt("BestScore", 0);
 		}
