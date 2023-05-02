@@ -18,25 +18,24 @@ public class UIController : MonoBehaviour
 
     private void Update()
     {
-		if (DataManager.Instance.Score > DataManager.Instance.BestScore && DataManager.Instance.BestScore > 0)
+		if (DataManager.Instance.Score > PlayerPrefs.GetInt("BestScore") && PlayerPrefs.GetInt("BestScore") > 0)
         {
             if (!isBestScore)
             {
                 isBestScore = true;
                 gameManager.Best();
             }
-			DataManager.Instance.BestScore = DataManager.Instance.Score;
+			PlayerPrefs.SetInt("BestScore", DataManager.Instance.Score);
         }
-		bestScore.text = DataManager.Instance.BestScore.ToString("0000000");
+		bestScore.text = PlayerPrefs.GetInt("BestScore").ToString("0000000");
 	}
 
     public void GameOver()
     {
 		gameOverPanel.SetActive(true);
-		if (DataManager.Instance.Score > DataManager.Instance.BestScore)
+		if (DataManager.Instance.Score > PlayerPrefs.GetInt("BestScore"))
         {
-			DataManager.Instance.BestScore = DataManager.Instance.Score;
-            PlayerPrefs.SetInt("BestScore", DataManager.Instance.BestScore);
+            PlayerPrefs.SetInt("BestScore", DataManager.Instance.Score);
         }
 	}
 }

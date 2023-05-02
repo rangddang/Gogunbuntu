@@ -72,15 +72,15 @@ public class Pointer : MonoBehaviour
 		bool pop = false;
 		while (transform.position.x < X)
 		{
+			saveY = transform.position.y;
+			speed = Random.Range(0.1f, 3f);
+			transform.position += Vector3.right * Time.deltaTime * speed;
+			transform.position = new Vector3(transform.position.x, (Mathf.Abs(Mathf.Sin(transform.position.x * 5.5f)) * 0.4f), 0);
 			if (transform.position.y < saveY && !pop)
 			{
 				pop = true;
 			}
-			saveY = transform.position.y;
-			speed = Random.Range(0.1f, 3f);
-			transform.position += Vector3.right * Time.deltaTime * speed;
-			transform.position = new Vector3(transform.position.x, (Mathf.Abs(Mathf.Sin(transform.position.x * 5.5f)) * 0.4f) + Random.Range(-0.01f, 0.01f), 0);
-			if(transform.position.y > saveY && pop && transform.position.y < 0.06f)
+			if (transform.position.y > saveY && pop)
 			{
 				pop = false;
 				SoundManager.Instance.SFXPlay("Move", moveSound[Random.Range(0, moveSound.Count)]);

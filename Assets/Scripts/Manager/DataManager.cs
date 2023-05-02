@@ -28,9 +28,24 @@ public class DataManager : MonoBehaviour
 	}
 
     public int Score = 0;
-    public int BestScore = 0;
     public int Stage = 0;
     public bool isDead = false;
     public bool isEnd = false;
 
+	[RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
+	static void FirstLoad()
+	{
+        if (!PlayerPrefs.HasKey("BestScore"))
+        {
+            PlayerPrefs.SetInt("BestScore", 0);
+		}
+		if (!PlayerPrefs.HasKey("BGMScale"))
+		{
+			PlayerPrefs.SetFloat("BGMScale", 1f);
+		}
+		if (!PlayerPrefs.HasKey("SFXScale"))
+		{
+			PlayerPrefs.SetFloat("SFXScale", 1f);
+		}
+	}
 }

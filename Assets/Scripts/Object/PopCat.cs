@@ -5,6 +5,7 @@ using UnityEngine;
 public class PopCat : MonoBehaviour
 {
     [SerializeField] private Transform pointer;
+    [SerializeField] private AudioClip popSound;
     private Pointer pnt;
     private Animator anim;
 
@@ -15,11 +16,6 @@ public class PopCat : MonoBehaviour
     {
         pnt = pointer.GetComponent<Pointer>();
         anim = GetComponent<Animator>();
-	}
-
-    private void Start()
-    {
-		SetAnim(0);
 	}
 
     private void Update()
@@ -39,6 +35,7 @@ public class PopCat : MonoBehaviour
     {
         yield return new WaitForSeconds(1);
         SetAnim(1);
+		SoundManager.Instance.SFXPlay("Pop", popSound);
 	}
 
     public void SetAnim(int an)

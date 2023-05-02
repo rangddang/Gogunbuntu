@@ -27,21 +27,21 @@ public class Fish : MonoBehaviour
             one = true;
             isPlay = true;
 			StartCoroutine("StartFish");
-            StartCoroutine("Fishs");
-            StartCoroutine("EatSound");
-			StartCoroutine("StopFish");
-        }
+		}
 	}
 
 	private IEnumerator StartFish()
 	{
 		yield return new WaitForSeconds(1f);
 		particle.Play();
+		StartCoroutine("Fishs");
+		StartCoroutine("EatSound");
+		StartCoroutine("StopFish");
 	}
 
 	private IEnumerator StopFish()
     {
-        float fishTime = particle.emission.rateOverTime.constantMax;
+		float fishTime = particle.emission.rateOverTime.constantMax;
 		float sec = (DataManager.Instance.Score / fishPrice) * (1 / fishTime);
         yield return new WaitForSeconds(sec);
 		particle.Stop();
@@ -53,18 +53,17 @@ public class Fish : MonoBehaviour
 
     private IEnumerator Fishs()
     {
-		yield return new WaitForSeconds(1f);
 		while (DataManager.Instance.Score >= fishPrice)
         {
             DataManager.Instance.Score -= fishPrice;
 			yield return new WaitForSeconds(1 / particle.emission.rateOverTime.constantMax);
 		}
-		//yield return new WaitForSeconds(particle.startLifetime);
+		yield return new WaitForSeconds(particle.startLifetime - 0.5f);
         isPlay = false;
 	}
     private IEnumerator EatSound()
     {
-        yield return new WaitForSeconds(particle.startLifetime + 0.9f);
+        yield return new WaitForSeconds(particle.startLifetime);
         while (isPlay)
         {
             yield return new WaitForSeconds(1 / particle.emission.rateOverTime.constantMax);

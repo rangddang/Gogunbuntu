@@ -61,7 +61,7 @@ public class PlayerActive : MonoBehaviour
         float veloY = 0;
         float gra = 9.8f;
         float graScale = 14;
-        float rev = 15f + wire.WireDistance * 1.2f;
+        float rev = 20f + wire.WireDistance * 1.2f;
         veloY -= rev;
         do
         {
